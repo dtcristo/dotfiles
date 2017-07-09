@@ -1,4 +1,7 @@
-!
+!--------------------------------------
+! Set Caps to Ctrl, Ctrl+Caps to Caps
+! and Ctrl+{hjkl} to arrow keys
+!--------------------------------------
 clear      lock 
 clear   control
 clear      mod1
@@ -6,9 +9,9 @@ clear      mod2
 clear      mod3
 clear      mod4
 clear      mod5
-! Control_L key
+! Remap Control_L key
 keycode      37 = Mode_switch 
-! Caps_Lock key
+! Remap Caps_Lock key
 keycode      66 = Control_L NoSymbol Caps_Lock
 keycode      43 = h H Left Left
 keycode      44 = j J Down Down
