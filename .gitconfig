@@ -1,0 +1,5 @@
+[user]
+	email = david@dtcristo.com
+	name = David Cristofaro
+[core]
+	excludesfile = /home/dtcristo/.gitignore_global

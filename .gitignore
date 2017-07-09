@@ -1,0 +1,28 @@
+# .gitignore for dotfiles
+#########################
+
+# Ignore everything
+#------------------
+*
+
+# Only include the following
+#---------------------------
+
+# git
+!.gitconfig
+!.gitignore
+!.gitignore_global
+
+# Xorg
+!.xprofile
+!.Xmodmap
+!.Xresources
+
+# fish
+!.config/fish/config.fish
+
+# nvim
+!.config/nvim/init.vim
+
+# chruby
+!.ruby-version
