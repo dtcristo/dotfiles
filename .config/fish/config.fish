@@ -1,7 +1,6 @@
 set -gx EDITOR nvim
 set -gx VISUAL nvim
 
-#------------------------------
 # chruby, ruby version switcher
 #------------------------------
 set -gx CHRUBY_ROOT /usr
