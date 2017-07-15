@@ -18,6 +18,7 @@
 !/.xprofile
 !/.Xmodmap
 !/.Xresources
+!/.Xresources.d/base16-solarflare.Xresources
 
 # dircolors
 !/.dir_colors
