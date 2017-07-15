@@ -15,6 +15,29 @@
 # 14 Bright Cyan      base05
 # 15 Bright White     base07
 
+# Solarized colors
+#-----------------
+# Background tones
+set -l solarized_base03  "brblack"
+set -l solarized_base02  "black"
+# Content tones
+set -l solarized_base01  "brgreen"
+set -l solarized_base00  "bryellow"
+set -l solarized_base0   "brblue"
+set -l solarized_base1   "brcyan"
+# Background tones
+set -l solarized_base2   "white"
+set -l solarized_base3   "brwhite"
+# Accent colors
+set -l solarized_yellow  "yellow"
+set -l solarized_orange  "brred"
+set -l solarized_red     "red"
+set -l solarized_magenta "magenta"
+set -l solarized_violet  "brmagenta"
+set -l solarized_blue    "blue"
+set -l solarized_cyan    "cyan"
+set -l solarized_green   "green"
+
 # Background tones
 set -l base00 "brblack"
 set -l base01 "black"
@@ -36,15 +59,23 @@ set -l base0D "blue"
 set -l base0E "brmagenta"
 set -l base0F "magenta"
 # Accent colors (aliased)
-set -l red "red"
-set -l orange "brred"
-set -l yellow "yellow"
-set -l green "green"
-set -l cyan "cyan"
-set -l blue "blue"
-set -l violet "brmagenta"
+set -l red     "red"
+set -l orange  "brred"
+set -l yellow  "yellow"
+set -l green   "green"
+set -l cyan    "cyan"
+set -l blue    "blue"
+set -l violet  "brmagenta"
 set -l magenta "magenta"
 
+# set_color $solarized_base03; echo "solarized_base03"
+# set_color $solarized_base02; echo "solarized_base02"
+# set_color $solarized_base01; echo "solarized_base01"
+# set_color $solarized_base00; echo "solarized_base00"
+# set_color $solarized_base0; echo "solarized_base0"
+# set_color $solarized_base1; echo "solarized_base1"
+# set_color $solarized_base2; echo "solarized_base2"
+# set_color $solarized_base3; echo "solarized_base3"
 # set_color $base00; echo "base00"
 # set_color $base01; echo "base01"
 # set_color $base02; echo "base02"
