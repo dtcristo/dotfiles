@@ -19,6 +19,9 @@
 !/.Xmodmap
 !/.Xresources
 
+# dircolors
+!/.dir_colors
+
 # fish
 !/.config/fish/config.fish
 !/.config/fish/colors.fish
