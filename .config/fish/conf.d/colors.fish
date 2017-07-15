@@ -1,3 +1,5 @@
+# Base16 color mapping
+#---------------------------
 # 0  Black            base01
 # 1  Red              base08
 # 2  Yellow           base0A
@@ -14,6 +16,38 @@
 # 13 Bright Magenta   base0E
 # 14 Bright Cyan      base05
 # 15 Bright White     base07
+
+# Base16 colors
+#--------------
+# Background tones
+set -l base00 "brblack"
+set -l base01 "black"
+# Content tones
+set -l base02 "brgreen"
+set -l base03 "bryellow"
+set -l base04 "brblue"
+set -l base05 "brcyan"
+# Background tones
+set -l base06 "white"
+set -l base07 "brwhite"
+# Accent colors
+set -l base08 "red"
+set -l base09 "brred"
+set -l base0A "yellow"
+set -l base0B "green"
+set -l base0C "cyan"
+set -l base0D "blue"
+set -l base0E "brmagenta"
+set -l base0F "magenta"
+# Accent colors (aliases)
+set -l red     "red"
+set -l orange  "brred"
+set -l yellow  "yellow"
+set -l green   "green"
+set -l cyan    "cyan"
+set -l blue    "blue"
+set -l violet  "brmagenta"
+set -l magenta "magenta"
 
 # Solarized colors
 #-----------------
@@ -38,36 +72,8 @@ set -l solarized_blue    "blue"
 set -l solarized_cyan    "cyan"
 set -l solarized_green   "green"
 
-# Background tones
-set -l base00 "brblack"
-set -l base01 "black"
-# Content tones
-set -l base02 "brgreen"
-set -l base03 "bryellow"
-set -l base04 "brblue"
-set -l base05 "brcyan"
-# Background tones
-set -l base06 "white"
-set -l base07 "brwhite"
-# Accent colors
-set -l base08 "red"
-set -l base09 "brred"
-set -l base0A "yellow"
-set -l base0B "green"
-set -l base0C "cyan"
-set -l base0D "blue"
-set -l base0E "brmagenta"
-set -l base0F "magenta"
-# Accent colors (aliased)
-set -l red     "red"
-set -l orange  "brred"
-set -l yellow  "yellow"
-set -l green   "green"
-set -l cyan    "cyan"
-set -l blue    "blue"
-set -l violet  "brmagenta"
-set -l magenta "magenta"
-
+# Debug prints
+#-------------
 # set_color $solarized_base03; echo "solarized_base03"
 # set_color $solarized_base02; echo "solarized_base02"
 # set_color $solarized_base01; echo "solarized_base01"
@@ -94,6 +100,8 @@ set -l magenta "magenta"
 # set_color $base0F; echo "base0F"
 # set_color normal
 
+# Fish colors
+#------------
 set -gx fish_color_normal $base04 # the default color
 set -gx fish_color_command $blue # the color for commands
 set -gx fish_color_quote $cyan # the color for quoted blocks of text
@@ -112,7 +120,6 @@ set -gx fish_color_autosuggestion $base02 # the color used for autosuggestions
 set -gx fish_color_user $blue # the color used to print the current username in some of fish default prompts
 set -gx fish_color_host $cyan # the color used to print the current host system in some of fish default prompts
 set -gx fish_color_cancel $base02 # the color for the '^C' indicator on a canceled command
-
 set -gx fish_pager_color_prefix $cyan # the color of the prefix string, i.e. the string that is to be completed
 set -gx fish_pager_color_completion $base02 # the color of the completion itself
 set -gx fish_pager_color_description $yellow # the color of the completion description
@@ -120,4 +127,5 @@ set -gx fish_pager_color_progress "--background=$base01" $cyan # the color of th
 set -gx fish_pager_color_secondary $base01 # the background color of the every second completion
 
 # Custom fish colors
+#-------------------
 set -gx fish_color_vcs $yellow # the color used to print the current vcs/git branch in prompt
