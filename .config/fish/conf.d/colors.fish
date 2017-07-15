@@ -1,21 +1,21 @@
 # Base16 color mapping
-#---------------------------
-# 0  Black            base01
-# 1  Red              base08
-# 2  Yellow           base0A
-# 3  Green            base0B
-# 4  Blue             base0D
-# 5  Magenta          base0F
-# 6  Cyan             base0C
-# 7  White            base06
-# 8  Bright Black     base00
-# 9  Bright Red       base09
-# 10 Bright Yellow    base03
-# 11 Bright Green     base02
-# 12 Bright Blue      base04
-# 13 Bright Magenta   base0E
-# 14 Bright Cyan      base05
-# 15 Bright White     base07
+#------------------------------------
+# *.color0    Black            base01
+# *.color1    Red              base08
+# *.color2    Green            base0B
+# *.color3    Yellow           base0A
+# *.color4    Blue             base0D
+# *.color5    Magenta          base0F
+# *.color6    Cyan             base0C
+# *.color7    White            base06
+# *.color8    Bright Black     base00
+# *.color9    Bright Red       base09
+# *.color10   Bright Green     base02
+# *.color11   Bright Yellow    base03
+# *.color12   Bright Blue      base04
+# *.color13   Bright Magenta   base0E
+# *.color14   Bright Cyan      base05
+# *.color15   Bright White     base07
 
 # Base16 colors
 #--------------
