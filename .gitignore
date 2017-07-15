@@ -22,6 +22,7 @@
 # fish
 !/.config/fish/config.fish
 !/.config/fish/colors.fish
+!/.config/fish/functions/fish_prompt.fish
 
 # nvim
 !/.config/nvim/init.vim
