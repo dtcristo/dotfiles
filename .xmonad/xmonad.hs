@@ -29,6 +29,6 @@ main = xmonad $ xfceConfig
     , startupHook = do
           startupHook xfceConfig
           -- Fixes issue with xfce4-panel vanishing on XMonad startup
-          spawn "kill $(pgrep xfce4-panel)"
+          spawn "kill -9 $(pgrep xfce4-panel)"
     }
     -- `additionalKeys` [ ((mod4Mask, xK_F1), spawn "firefox") ]
