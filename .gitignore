@@ -33,3 +33,6 @@
 
 # chruby
 !/.ruby-version
+
+# XMonad
+!/.xmonad/xmonad.hs
