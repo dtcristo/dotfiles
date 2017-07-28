@@ -18,4 +18,4 @@ Xft.lcdfilter: lcddefault
 URxvt.font: xft:Iosevka Term:size=12
 URxvt.boldFont:
 
-#include ".Xresources.d/base16-solarflare.Xresources"
+#include ".Xresources.d/base16-solarflare-256.Xresources"
