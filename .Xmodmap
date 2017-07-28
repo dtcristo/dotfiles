@@ -10,9 +10,9 @@ clear      mod3
 clear      mod4
 clear      mod5
 ! Remap Control_L key
-keycode      37 = Mode_switch 
+!keycode      37 = Mode_switch 
 ! Remap Caps_Lock key
-keycode      66 = Control_L NoSymbol Caps_Lock
+!keycode      66 = Control_L NoSymbol Caps_Lock
 keycode      43 = h H Left Left
 keycode      44 = j J Down Down
 keycode      45 = k K Up Up
