@@ -16,4 +16,4 @@
 xset -b
 
 # Ctrl acts as Esc, Shift keys swtich spaces in Xfce.
-xcape -t 200 -e 'Control_L=Escape;Shift_L=Control_R|Alt_R|Left;Shift_R=Control_R|Alt_R|Right'
+# xcape -t 200 -e 'Control_L=Escape;Shift_L=Control_R|Alt_R|Left;Shift_R=Control_R|Alt_R|Right'
