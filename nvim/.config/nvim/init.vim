@@ -3,14 +3,13 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'jremmen/vim-ripgrep'
 
 " Sensible defaults
-Plug 'tpope/vim-sensible'
+" Plug 'tpope/vim-sensible'
 
 " Color schemes
-" Plug 'chriskempson/base16-vim'
-" Plug 'altercation/vim-colors-solarized'
+Plug 'chriskempson/base16-vim'
 
 Plug 'scrooloose/nerdtree'
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
 " Elixir support
 " Plug 'elixir-lang/vim-elixir'
@@ -18,36 +17,39 @@ Plug 'kien/ctrlp.vim'
 " Git support
 " Plug 'tpope/vim-fugitive'
 
-" Airline
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
-" Plug 'edkolev/tmuxline.vim'
+" Status bar
+Plug 'itchyny/lightline.vim'
+Plug 'mike-hearn/base16-vim-lightline'
 
-" Add plugins to &runtimepath
+" Initialize plugin system
 call plug#end()
 
-" inoremap jk <ESC>
-" let mapleader = "\<Space>"
-" nnoremap <leader>n :NERDTreeFind<CR>
+" CtrlP with ripgrep
+" https://elliotekj.com/2016/11/22/setup-ctrlp-to-use-ripgrep-in-vim/
+if executable('rg')
+  set grepprg=rg\ --color=never
+  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+  let g:ctrlp_use_caching = 0
+endif
+set wildignore+=*/.git/*,*/tmp/*,*.swp
 
-" Remove duplicate mode indicator
-" set noshowmode
+" Color schemes
+let base16colorspace=256 " Access colors present in 256 colorspace
+colorscheme base16-solar-flare
 
-" Syntax highlighting
-" syntax on
-" set background=dark
-" colorscheme solarized
-" colorscheme base16-flat
-" let g:airline_theme='solarized' lly enabled
+" Misc settings
+filetype plugin indent on
+let mapleader = "\<Space>" " Use space for leader key
+set number          " Show line numbers
+set list            " Show invisible characters
+set tabstop=8       " Width of a tab character
+set shiftwidth=4    " Width of an indent
+set expandtab       " Expand tabs to spaces
 
-" Add line numbers
-" set number
+" Key bindings
+let mapleader = "\<Space>" " Use space for leader key
+map <C-n> :NERDTreeToggle<CR>
 
-" Expand tabs to spaces
-" filetype plugin indent on
-" set tabstop=2
-" set shiftwidth=2
-" set expandtab
-
-" Powerline fonts for airline
-" let g:airline_powerline_fonts = 1
+" Status bar
+set noshowmode      " Remove duplicate mode indicator
+let g:lightline = { 'colorscheme': 'base16_solarflare' }
