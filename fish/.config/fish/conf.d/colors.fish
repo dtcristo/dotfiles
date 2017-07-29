@@ -5,31 +5,34 @@ if status --is-interactive
   #
   # ANSI 16 colours
   #----------------
-  # color00 base00 Black
-  # color01 base08 Red
-  # color02 base0B Green
-  # color03 base0A Yellow
-  # color04 base0D Blue
-  # color05 base0E Magenta          (Violet)
-  # color06 base0C Cyan
-  # color07 base05 White
-  # color08 base03 Bright_Black
+  # color00 base00 Black                ^solarized_base03
+  # color01 base08 Red                  solarized_red
+  # color02 base0B Green                solarized_green
+  # color03 base0A Yellow               solarized_yellow
+  # color04 base0D Blue                 solarized_blue
+  # color05 base0E Magenta              solarized_violet        (Violet)
+  # color06 base0C Cyan                 solarized_cyan
+  # color07 base05 White                solarized_base1
+  # color08 base03 Bright_Black         *solarized_base00
   # color09 base08 Bright_Red
   # color10 base0B Bright_Green
   # color11 base0A Bright_Yellow
   # color12 base0D Bright_Blue
   # color13 base0E Bright_Magenta
   # color14 base0C Bright_Cyan
-  # color15 base07 Bright_White
+  # color15 base07 Bright_White         *solarized_base3
   #
   # 256 colors
   #-----------
-  # color16 base09                  (Orange)
-  # color17 base0F                  (Magenta)
-  # color18 base01
-  # color19 base02
-  # color20 base04
-  # color21 base06
+  # color16 base09                      solarized_orange        (Orange)
+  # color17 base0F                      solarized_magenta       (Magenta)
+  # color18 base01                      ^solarized_base02
+  # color19 base02                      solarized_base01
+  # color20 base04                      ^solarized_base0
+  # color21 base06                      *solarized_base2
+
+  # ^ Only dark theme
+  # * Only light theme
 
   # Base16 colors
   #--------------
@@ -39,14 +42,14 @@ if status --is-interactive
   # Content tones
   set -l base02 "586875"
   set -l base03 "brblack"
-  set -l base04 "#85939E"
+  set -l base04 "85939E"
   set -l base05 "white"
   # Background tones
   set -l base06 "E8E9ED"
   set -l base07 "brwhite"
   # Accent colors
   set -l base08 "red"
-  set -l base09 "E66B2B"    # Orange
+  set -l base09 "E66B2B"   # Orange
   set -l base0A "yellow"
   set -l base0B "green"
   set -l base0C "cyan"
