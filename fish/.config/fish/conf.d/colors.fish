@@ -57,6 +57,10 @@ if status --is-interactive
   set -l base0E "magenta"  # Violet
   set -l base0F "D73C9A"   # Magenta
   # Accent colors (aliases)
+  set -l background $base00
+  set -l comment    $base03
+  set -l primary    $base05
+  set -l highlight  $base07
   set -l red     $base08
   set -l orange  $base09
   set -l yellow  $base0A
@@ -88,7 +92,7 @@ if status --is-interactive
 
   # Fish colors
   #------------
-  set -gx fish_color_normal $base04 # the default color
+  set -gx fish_color_normal $primary # the default color
   set -gx fish_color_command $blue # the color for commands
   set -gx fish_color_quote $cyan # the color for quoted blocks of text
   set -gx fish_color_redirection $base04 # the color for IO redirections
@@ -102,10 +106,10 @@ if status --is-interactive
   set -gx fish_color_escape $yellow # the color used to highlight character escapes like '\n' and '\x70'
   set -gx fish_color_cwd $green # the color used for the current working directory in the default prompt
   set -gx fish_color_cwd_root $red
-  set -gx fish_color_autosuggestion $base02 # the color used for autosuggestions
+  set -gx fish_color_autosuggestion $comment # the color used for autosuggestions
   set -gx fish_color_user $blue # the color used to print the current username in some of fish default prompts
   set -gx fish_color_host $cyan # the color used to print the current host system in some of fish default prompts
-  set -gx fish_color_cancel $base02 # the color for the '^C' indicator on a canceled command
+  set -gx fish_color_cancel $comment # the color for the '^C' indicator on a canceled command
   set -gx fish_pager_color_prefix $cyan # the color of the prefix string, i.e. the string that is to be completed
   set -gx fish_pager_color_completion $base02 # the color of the completion itself
   set -gx fish_pager_color_description $yellow # the color of the completion description
