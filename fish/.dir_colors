@@ -132,8 +132,8 @@ EXEC 38;5;2 # Unix
 .reg 38;5;2 # Win
 .app 38;5;2 # OSX
 
-# dir that is other-writable (o+w) and not sticky (color00 - base0) on [color04 - base0D - blue]
-OTHER_WRITABLE 48;5;4;38;5;0
+# dir that is other-writable (o+w) and not sticky (color04 - base0D - blue)
+OTHER_WRITABLE 4;38;5;4
 # dir that is sticky and other-writable (+t,o+w) (color00 - base0) on [color06 - base0C - cyan]
 STICKY_OTHER_WRITABLE 48;5;6;38;5;0
 # dir with the sticky bit set (+t) and not other-writable (color00 - base0) on [color02 - base0B - green]
@@ -153,13 +153,129 @@ CAPABILITY 48;5;1;38;5;0
 # to colorize below. Put the extension, a space, and the color init string.
 # (and any comments you want to add after a '#')
 
+
+### Test colors
+
+# base16 256 colors
+.c000 48;5;000;38;5;0 # base00
+.c001 48;5;001;38;5;0 # base08
+.c002 48;5;002;38;5;0 # base0B
+.c003 48;5;003;38;5;0 # base0A
+.c004 48;5;004;38;5;0 # base0D
+.c005 48;5;005;38;5;0 # base0E
+.c006 48;5;006;38;5;0 # base0C
+.c007 48;5;007;38;5;0 # base05
+.c008 48;5;008;38;5;0 # base03
+.c009 48;5;009;38;5;0
+.c010 48;5;010;38;5;0
+.c011 48;5;011;38;5;0
+.c012 48;5;012;38;5;0
+.c013 48;5;013;38;5;0
+.c014 48;5;014;38;5;0
+.c015 48;5;015;38;5;0 # base07
+.c016 48;5;016;38;5;0 # base09
+.c017 48;5;017;38;5;0 # base0F
+.c018 48;5;018;38;5;0 # base01
+.c019 48;5;019;38;5;0 # base02
+.c020 48;5;020;38;5;0 # base04
+.c021 48;5;021;38;5;0 # base06
+
+# Reordered
+.c000 48;5;000;38;5;0 # base00 - background - black
+.c018 48;5;018;38;5;0 # base01
+.c019 48;5;019;38;5;0 # base02
+.c008 48;5;008;38;5;0 # base03 - comment    - brblack
+.c020 48;5;020;38;5;0 # base04
+.c007 48;5;007;38;5;0 # base05 - primary    - white
+.c021 48;5;021;38;5;0 # base06
+.c015 48;5;015;38;5;0 # base07 - highlight  - brwhite
+.c001 48;5;001;38;5;0 # base08
+.c016 48;5;016;38;5;0 # base09
+.c003 48;5;003;38;5;0 # base0A
+.c002 48;5;002;38;5;0 # base0B
+.c006 48;5;006;38;5;0 # base0C
+.c004 48;5;004;38;5;0 # base0D
+.c005 48;5;005;38;5;0 # base0E
+.c017 48;5;017;38;5;0 # base0F
+
+.a00 00 # Normal
+.a01 01 # Bold and bright
+.a02 02
+.a03 03 # Italics
+.a04 04 # Underscore
+.a05 05 # Blink
+.a06 06
+.a07 07 # Reverse
+.a08 08 # Concealed
+.a09 09a
+.a10 10
+.a11 11
+.a12 12
+.a13 13
+.a14 14
+.a15 15
+.a16 16
+.a17 17
+.a18 18
+.a19 19
+.a20 20
+.a21 21
+.a22 22
+.a23 23
+.a24 24
+.a25 25
+.a26 26
+.a27 27
+.a28 28
+.a29 29
+.a30 30 # Black
+.a31 31 # Red
+.a32 32 # Green
+.a33 33 # Yellow
+.a34 34 # Blue
+.a35 35 # Magenta
+.a36 36 # Cyan
+.a37 37 # White
+.a1-30 1;30 # Bold Bright Black
+.a1-31 1;31 # Bold Bright Red
+.a1-32 1;32 # Bold Bright Green
+.a1-33 1;33 # Bold Bright Yellow
+.a1-34 1;34 # Bold Bright Blue
+.a1-35 1;35 # Bold Bright Magenta
+.a1-36 1;36 # Bold Bright Cyan
+.a1-37 1;37 # Bold Bright White
+.a38 38
+.a39 39
+.a40 40 # Background Black
+.a41 41 # Background Red
+.a42 42 # Background Green
+.a43 43 # Background Yellow
+.a44 44 # Background Blue
+.a45 45 # Background Magenta
+.a46 46 # Background Cyan
+.a47 47 # Background White
+.a48 48
+.a49 49
+.a50 50
+
+
 ### Text formats
 
-# Text that we can edit with a regular editor (color06 - base0C - cyan)
-.txt 38;5;6
-.org 38;5;6
-.md 38;5;6
-.mkd 38;5;6
+# Text that we can edit with a regular editor (color15 - base07 - brwhite)
+.txt 38;5;15
+.org 38;5;15
+.md 38;5;15
+.mkd 38;5;15
+.markdown 38;5;15
+*LICENSE 38;5;15
+*AUTHORS 38;5;15
+*COPYING 38;5;15
+*CONTRIBUTE 38;5;15
+*README 38;5;15
+*CHANGELOG 38;5;15
+*INSTALL 38;5;15
+*NEWS 38;5;15
+*VERSION 38;5;15
 
 # Source text (color06 - base0C - cyan)
 .h 38;5;6
@@ -223,6 +339,7 @@ CAPABILITY 48;5;1;38;5;0
 .yaml 38;5;5
 .toml 38;5;5
 .xml 38;5;5
+.cson 38;5;5
 
 ### Multimedia formats
 
@@ -385,29 +502,29 @@ CAPABILITY 48;5;1;38;5;0
 .rz 38;5;5
 .zip 38;5;5
 
-# Unimportant files (color19 - base02)
-.log 38;5;19
-*~ 38;5;19
-*# 38;5;19
-.bak 38;5;19
-.BAK 38;5;19
-.old 38;5;19
-.OLD 38;5;19
-.org_archive 38;5;19
-.off 38;5;19
-.OFF 38;5;19
-.dist 38;5;19
-.DIST 38;5;19
-.orig 38;5;19
-.ORIG 38;5;19
-.swp 38;5;19
-.swo 38;5;19
-.lock 38;5;19
-.part 38;5;19
-.incomplete 38;5;19
-.tmp 38;5;19
-.temp 38;5;19
-.pyc 38;5;19
-.class 38;5;19
-.cache 38;5;19
-*,v 38;5;19
+# Unimportant files (color08 - base03)
+.log 38;5;8
+*~ 38;5;8
+*# 38;5;8
+.bak 38;5;8
+.BAK 38;5;8
+.old 38;5;8
+.OLD 38;5;8
+.org_archive 38;5;8
+.off 38;5;8
+.OFF 38;5;8
+.dist 38;5;8
+.DIST 38;5;8
+.orig 38;5;8
+.ORIG 38;5;8
+.swp 38;5;8
+.swo 38;5;8
+.lock 38;5;8
+.part 38;5;8
+.incomplete 38;5;8
+.tmp 38;5;8
+.temp 38;5;8
+.pyc 38;5;8
+.class 38;5;8
+.cache 38;5;8
+*,v 38;5;8
