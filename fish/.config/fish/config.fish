@@ -11,6 +11,7 @@ source /usr/local/share/chruby/auto.fish
 #-------------
 if status --is-interactive
   eval sh $HOME/.config/base16-shell/scripts/base16-solar-flare.sh
+  source $HOME/.config/base16-shell/profile_helper.fish
 end
 
 abbr be 'bundle exec'
