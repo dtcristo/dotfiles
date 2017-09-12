@@ -15,7 +15,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 " Plug 'elixir-lang/vim-elixir'
 
 " Git support
-" Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 
 " Status bar
 Plug 'itchyny/lightline.vim'
