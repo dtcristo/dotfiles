@@ -95,13 +95,14 @@ if status --is-interactive
   set -gx fish_color_normal $primary # the default color
   set -gx fish_color_command $blue # the color for commands
   set -gx fish_color_quote $cyan # the color for quoted blocks of text
-  set -gx fish_color_redirection $base04 # the color for IO redirections
-  set -gx fish_color_end $base04 # the color for process separators like ';' and '&'
+  set -gx fish_color_selection $red '--bold' '--background=brblack'
+  set -gx fish_color_redirection $red # the color for IO redirections
+  set -gx fish_color_end $green # the color for process separators like ';' and '&'
   set -gx fish_color_error $red # the color used to highlight potential errors
   set -gx fish_color_param $violet # the color for regular command parameters
-  set -gx fish_color_comment $base02 # the color used for code comments
+  set -gx fish_color_comment $comment # the color used for code comments
   set -gx fish_color_match $cyan # the color used to highlight matching parenthesis
-  set -gx fish_color_search_match "--background=$base01" # the color used to highlight history search matches
+  set -gx fish_color_search_match "--background=$comment" # the color used to highlight history search matches
   set -gx fish_color_operator $orange # the color for parameter expansion operators like '*' and '~'
   set -gx fish_color_escape $yellow # the color used to highlight character escapes like '\n' and '\x70'
   set -gx fish_color_cwd $green # the color used for the current working directory in the default prompt
@@ -111,10 +112,10 @@ if status --is-interactive
   set -gx fish_color_host $cyan # the color used to print the current host system in some of fish default prompts
   set -gx fish_color_cancel $comment # the color for the '^C' indicator on a canceled command
   set -gx fish_pager_color_prefix $cyan # the color of the prefix string, i.e. the string that is to be completed
-  set -gx fish_pager_color_completion $base02 # the color of the completion itself
-  set -gx fish_pager_color_description $yellow # the color of the completion description
-  set -gx fish_pager_color_progress "--background=$base01" $cyan # the color of the progress bar at the bottom left corner
-  set -gx fish_pager_color_secondary $base01 # the background color of the every second completion
+  set -gx fish_pager_color_completion $comment # the color of the completion itself
+  set -gx fish_pager_color_description $primary # the color of the completion description
+  set -gx fish_pager_color_progress "--underline" "--background=$cyan" # the color of the progress bar at the bottom left corner
+  set -gx fish_pager_color_secondary $red # the background color of the every second completion
 
   # Custom fish colors
   #-------------------
