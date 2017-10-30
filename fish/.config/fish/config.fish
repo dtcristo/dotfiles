@@ -15,3 +15,6 @@ if status --is-interactive
 end
 
 abbr be 'bundle exec'
+abbr dig 'drill'
+abbr to_staging 'git checkout staging; and git merge development; and git push; and git checkout development'
+abbr to_master 'git checkout master; and git merge staging; and git push; and git checkout development'
