@@ -11,11 +11,15 @@ Plug 'jremmen/vim-ripgrep'
 " Color schemes
 Plug 'chriskempson/base16-vim'
 
+" File navigation
 Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
 
-" Elixir support
+" Language support
 " Plug 'elixir-lang/vim-elixir'
+Plug 'isRuslan/vim-es6'
+Plug 'leafgarland/typescript-vim'
+Plug 'tpope/vim-rails'
 
 " Git support
 Plug 'tpope/vim-fugitive'
@@ -25,8 +29,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'itchyny/lightline.vim'
 Plug 'mike-hearn/base16-vim-lightline'
 
-" Rails
-Plug 'tpope/vim-rails'
+" Disable motion anti-patterns
+Plug 'takac/vim-hardtime'
 
 " Initialize plugin system
 call plug#end()
@@ -40,6 +44,9 @@ if executable('rg')
 endif
 set wildignore+=*/.git/*,*/tmp/*,*.swp
 
+" Highlight results in ripgrep
+let g:rg_highlight = 'true'
+
 " Color schemes
 let base16colorspace=256 " Access colors present in 256 colorspace
 colorscheme base16-solar-flare
@@ -47,15 +54,58 @@ colorscheme base16-solar-flare
 " Misc settings
 filetype plugin indent on
 let mapleader = "\<Space>" " Use space for leader key
-set number          " Show line numbers
+set number relativenumber  " Show line numbers
 set list            " Show invisible characters
 set tabstop=8       " Width of a tab character
 set shiftwidth=2    " Width of an indent
 set expandtab       " Expand tabs to spaces
+set scrolloff=10    " Never let cursor hit bottom
+set cursorline      " Highlight current line
+set synmaxcol=300   " Kill syntax highlighting after column 300
+let g:hardtime_default_on = 1 " Hard mode enabled
+
+" Auto toggle out of relative numbers for unfocused split
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+
+" NERDTree
+let NERDTreeShowLineNumbers=1
 
 " Key bindings
 let mapleader = "\<Space>" " Use space for leader key
-map <C-n> :NERDTreeToggle<CR>
+nnoremap <leader>t :NERDTreeToggle<CR>
+nnoremap <leader>f :NERDTreeFind<CR>
+nnoremap <leader>1 1gt
+nnoremap <leader>2 2gt
+nnoremap <leader>3 3gt
+nnoremap <leader>4 4gt
+nnoremap <leader>5 5gt
+nnoremap <leader>6 6gt
+nnoremap <leader>7 7gt
+nnoremap <leader>8 8gt
+nnoremap <leader>9 9gt
+nnoremap <leader>0 10gt
+
+" Automatically quit Vim if quickfix window is the last
+au BufEnter * call MyLastWindow()
+function! MyLastWindow()
+  " if the window is quickfix go on
+  if &buftype=="quickfix" || &buftype=="nofile" || &buftype=="help"
+    " if this window is last on screen quit without warning
+    if winbufnr(2) == -1
+      quit!
+    endif
+  endif
+endfunction
+
+" Auto watch vimrc for changes and reload.
+"augroup myvimrc
+"  au!
+"  au BufWritePost init.vim,.vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+"augroup END
 
 " Remove trailing whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
