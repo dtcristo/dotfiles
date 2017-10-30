@@ -1,4 +1,7 @@
 call plug#begin('~/.local/share/nvim/plugged')
+" Auto close brackets
+Plug 'Townk/vim-autoclose'
+
 " ripgrep plugin
 Plug 'jremmen/vim-ripgrep'
 
@@ -16,10 +19,14 @@ Plug 'ctrlpvim/ctrlp.vim'
 
 " Git support
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
 " Status bar
 Plug 'itchyny/lightline.vim'
 Plug 'mike-hearn/base16-vim-lightline'
+
+" Rails
+Plug 'tpope/vim-rails'
 
 " Initialize plugin system
 call plug#end()
@@ -43,12 +50,15 @@ let mapleader = "\<Space>" " Use space for leader key
 set number          " Show line numbers
 set list            " Show invisible characters
 set tabstop=8       " Width of a tab character
-set shiftwidth=4    " Width of an indent
+set shiftwidth=2    " Width of an indent
 set expandtab       " Expand tabs to spaces
 
 " Key bindings
 let mapleader = "\<Space>" " Use space for leader key
 map <C-n> :NERDTreeToggle<CR>
+
+" Remove trailing whitespace on save
+autocmd BufWritePre * %s/\s\+$//e
 
 " Status bar
 set noshowmode      " Remove duplicate mode indicator
