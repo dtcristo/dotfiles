@@ -3,8 +3,9 @@ import XMonad
 import XMonad.Config.Xfce
 import XMonad.Hooks.EwmhDesktops (fullscreenEventHook)
 import XMonad.Hooks.ManageHelpers (doCenterFloat)
--- import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat)
+import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat)
 -- import XMonad.Layout.Tabbed (simpleTabbed)
+import XMonad.Layout.NoBorders (smartBorders)
 import qualified XMonad.StackSet as W
 import XMonad.Util.EZConfig (additionalKeysP)
 
@@ -19,14 +20,15 @@ myHandleEventHook = fullscreenEventHook
 myManageHook = composeAll . concat $
     [ [ className =? c --> doCenterFloat | c <- cFloats ]
     , [ title     =? t --> doCenterFloat | t <- tFloats ]
-    -- , [ isFullscreen --> doFullFloat ]
+    --, [ isFullscreen --> doFullFloat ]
     ]
-  where cFloats = ["Gimp", "Xfrun4", "Xfce4-appfinder"]
-        tFloats = ["File Operation Progress"]
+  where cFloats = ["VirtualBox", "Gimp", "Xfrun4", "Xfce4-appfinder"]
+        tFloats = ["File Operation Progress", "Float"]
 
 myKeys =
-    [ ("M-f", spawn "firefox")
+    [ ("M-f", spawn "firefox-beta")
     , ("M-c", spawn "chromium")
+    , ("M-p", spawn "rofi -show drun")
     ] ++
     [ (otherModMasks ++ "M-" ++ [key], action tag) | (tag, key) <- zip myWorkspaces "123456789"
     , (otherModMasks, action) <-
@@ -38,11 +40,11 @@ myKeys =
 main = xmonad $ xfceConfig
     { modMask = myModMask
     , terminal = "xfce4-terminal"
-    , borderWidth = 2
+    , borderWidth = 3
     , normalBorderColor = "#222E38"
     , focusedBorderColor = "#85939E"
     -- , workspaces = myWorkspaces
-    -- , layoutHook = simpleTabbed ||| layoutHook xfceConfig
+    , layoutHook = smartBorders $ layoutHook xfceConfig
     , handleEventHook = myHandleEventHook <+> handleEventHook xfceConfig
     , manageHook = myManageHook <+> manageHook xfceConfig
     , startupHook = do
