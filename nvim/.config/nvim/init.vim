@@ -5,9 +5,6 @@ Plug 'Townk/vim-autoclose'
 " ripgrep plugin
 Plug 'jremmen/vim-ripgrep'
 
-" Sensible defaults
-" Plug 'tpope/vim-sensible'
-
 " Color schemes
 Plug 'chriskempson/base16-vim'
 
@@ -16,7 +13,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
 
 " Language support
-" Plug 'elixir-lang/vim-elixir'
+Plug 'elixir-lang/vim-elixir'
 Plug 'isRuslan/vim-es6'
 Plug 'leafgarland/typescript-vim'
 Plug 'tpope/vim-rails'
@@ -32,6 +29,9 @@ Plug 'mike-hearn/base16-vim-lightline'
 " Disable motion anti-patterns
 Plug 'takac/vim-hardtime'
 
+" Multiple cursors
+Plug 'terryma/vim-multiple-cursors'
+
 " Initialize plugin system
 call plug#end()
 
@@ -42,7 +42,7 @@ if executable('rg')
   let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
   let g:ctrlp_use_caching = 0
 endif
-set wildignore+=*/.git/*,*/tmp/*,*.swp
+set wildignore+=*/.git/*,*/tmp/*,*.swp,*/node_modules/*
 
 " Highlight results in ripgrep
 let g:rg_highlight = 'true'
@@ -73,11 +73,12 @@ augroup END
 
 " NERDTree
 let NERDTreeShowLineNumbers=1
+let NERDTreeWinSize=40
 
 " Key bindings
 let mapleader = "\<Space>" " Use space for leader key
-nnoremap <leader>t :NERDTreeToggle<CR>
-nnoremap <leader>f :NERDTreeFind<CR>
+nnoremap <silent> <leader>t :NERDTreeToggle<CR>
+nnoremap <silent> <leader>f :NERDTreeFind<CR>
 nnoremap <leader>1 1gt
 nnoremap <leader>2 2gt
 nnoremap <leader>3 3gt
@@ -88,6 +89,10 @@ nnoremap <leader>7 7gt
 nnoremap <leader>8 8gt
 nnoremap <leader>9 9gt
 nnoremap <leader>0 10gt
+" Clear highlighting on space
+nnoremap <silent> <return> :noh<return><return>
+" Ctrl-s for save
+nnoremap <C-s> :w<return>
 
 " Automatically quit Vim if quickfix window is the last
 au BufEnter * call MyLastWindow()
@@ -101,11 +106,8 @@ function! MyLastWindow()
   endif
 endfunction
 
-" Auto watch vimrc for changes and reload.
-"augroup myvimrc
-"  au!
-"  au BufWritePost init.vim,.vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
-"augroup END
+" Auto watch vimrc for changes and reload
+autocmd BufWritePost init.vim,.vimrc,_vimrc source $MYVIMRC
 
 " Remove trailing whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
