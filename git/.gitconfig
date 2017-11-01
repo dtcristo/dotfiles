@@ -1,6 +1,6 @@
 [user]
-	email = david@dtcristo.com
-	name = David Cristofaro
+  email = david@dtcristo.com
+  name = David Cristofaro
 # Human Git Aliases - http://gggritso.com/human-git-aliases
 [alias]
   unstage = reset -q HEAD --
@@ -58,3 +58,5 @@
   precomposeunicode = true
   excludesfile = ~/.gitignore_global
   untrackedCache = true
+[fetch]
+  prune = true
