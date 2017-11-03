@@ -17,6 +17,8 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'isRuslan/vim-es6'
 Plug 'leafgarland/typescript-vim'
 Plug 'tpope/vim-rails'
+Plug 'dag/vim-fish'
+Plug 'rhysd/vim-crystal'
 
 " Git support
 Plug 'tpope/vim-fugitive'
@@ -49,7 +51,7 @@ let g:rg_highlight = 'true'
 
 " Color schemes
 let base16colorspace=256 " Access colors present in 256 colorspace
-colorscheme base16-solar-flare
+colorscheme base16-solarflare
 
 " Misc settings
 filetype plugin indent on
@@ -74,23 +76,40 @@ augroup END
 " NERDTree
 let NERDTreeShowLineNumbers=1
 let NERDTreeWinSize=40
+let NERDTreeShowHidden=1
 
 " Key bindings
 let mapleader = "\<Space>" " Use space for leader key
 nnoremap <silent> <leader>t :NERDTreeToggle<CR>
 nnoremap <silent> <leader>f :NERDTreeFind<CR>
-nnoremap <leader>1 1gt
-nnoremap <leader>2 2gt
-nnoremap <leader>3 3gt
-nnoremap <leader>4 4gt
-nnoremap <leader>5 5gt
-nnoremap <leader>6 6gt
-nnoremap <leader>7 7gt
-nnoremap <leader>8 8gt
-nnoremap <leader>9 9gt
-nnoremap <leader>0 10gt
+" Tab navigation and movement
+nnoremap <M-Tab> gt
+nnoremap <M-S-Tab> gT
+nnoremap <M-1> 1gt
+nnoremap <M-2> 2gt
+nnoremap <M-3> 3gt
+nnoremap <M-4> 4gt
+nnoremap <M-5> 5gt
+nnoremap <M-6> 6gt
+nnoremap <M-7> 7gt
+nnoremap <M-8> 8gt
+nnoremap <M-9> 9gt
+nnoremap <silent> <M-H> :tabmove -1<return>
+nnoremap <silent> <M-L> :tabmove +1<return>
+nnoremap <silent> <M-!> :tabmove 0<return>
+nnoremap <silent> <M-@> :tabmove 1<return>
+nnoremap <silent> <M-#> :tabmove 2<return>
+nnoremap <silent> <M-$> :tabmove 3<return>
+nnoremap <silent> <M-%> :tabmove 4<return>
+nnoremap <silent> <M-^> :tabmove 5<return>
+nnoremap <silent> <M-&> :tabmove 6<return>
+nnoremap <silent> <M-*> :tabmove 7<return>
+nnoremap <silent> <M-(> :tabmove 8<return>
+" Quickfix list navigation
+nnoremap <silent> <M-n> :cnext<return>
+nnoremap <silent> <M-N> :cprev<return>
 " Clear highlighting on space
-nnoremap <silent> <return> :noh<return><return>
+"nnoremap <silent> <return> :noh<return><return>
 " Ctrl-s for save
 nnoremap <C-s> :w<return>
 
@@ -98,7 +117,7 @@ nnoremap <C-s> :w<return>
 au BufEnter * call MyLastWindow()
 function! MyLastWindow()
   " if the window is quickfix go on
-  if &buftype=="quickfix" || &buftype=="nofile" || &buftype=="help"
+  if &buftype=="quickfix" || &buftype=="nofile"
     " if this window is last on screen quit without warning
     if winbufnr(2) == -1
       quit!
