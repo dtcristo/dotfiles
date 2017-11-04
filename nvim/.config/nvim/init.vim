@@ -111,7 +111,9 @@ nnoremap <silent> <M-N> :cprev<return>
 " Clear highlighting on space
 "nnoremap <silent> <return> :noh<return><return>
 " Ctrl-s for save
-nnoremap <C-s> :w<return>
+nnoremap <silent> <C-s> :w<return>
+" Ctrl-\ for toggle word wrap
+nnoremap <silent> <C-\> :set wrap!<return>
 
 " Automatically quit Vim if quickfix window is the last
 au BufEnter * call MyLastWindow()
