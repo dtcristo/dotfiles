@@ -1,3 +1,20 @@
+# Vi mode
+set -g fish_key_bindings fish_vi_key_bindings
+
+# User key bindings
+function fish_user_key_bindings
+  bind -M default \cc kill-whole-line force-repaint
+  bind -M insert \cc kill-whole-line force-repaint
+  bind -M default \cf forward-char
+  bind -M insert \cf forward-char
+end
+
+set -g fish_cursor_defaut block
+set -g fish_cursor_insert line
+set -g fish_cursor_visual block
+set -g fish_cursor_replace_one underscore
+set -g fish_cursor_unknown block
+
 # Fish colors
 source $HOME/.config/fish/interactive.d/colors.fish
 
