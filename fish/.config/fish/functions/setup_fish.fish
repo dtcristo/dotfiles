@@ -1,10 +1,15 @@
 # Function sets up universal variables and preferenced
 function setup_fish
     echo 'Starting fish_setup...'
+    # User paths
+    #-----------
+    # echo '...setting user paths'
+    # set -U fish_user_paths /home/dtcristo/my_test/bin
+    # set -gx PATH /home/dtcristo/bin /home/dtcristo/.yarn/bin $PATH
+
     # Environment variables
     #----------------------
     echo '...setting environment variables'
-    # set -Ux PATH /home/dtcristo/bin /home/dtcristo/.yarn/bin $PATH
     set -Ux EDITOR nvim
     set -Ux VISUAL nvim
     # Path for C/C++ headers
@@ -40,6 +45,7 @@ function setup_fish
     # Abbreviations
     #--------------
     echo '...setting abbreviations'
+    set -U fish_user_abbreviations
     abbr -a be 'bundle exec'
     abbr -a dig 'drill'
     abbr -a to_staging 'git checkout staging; and git merge development; and git push; and git checkout development'
