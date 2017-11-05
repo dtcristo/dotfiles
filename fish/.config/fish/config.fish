@@ -1,15 +1,19 @@
-# Environment
-#------------
-source $HOME/.config/fish/environment.fish
+# chruby, ruby version switcher
+set -gx CHRUBY_ROOT /usr
+source /usr/local/share/chruby/chruby.fish
+source /usr/local/share/chruby/auto.fish
 
 # Interactive shell
 #------------------
 if status --is-interactive
-  source $HOME/.config/fish/interactive.fish
+    # Base16 shell colors
+    eval sh $HOME/.config/base16-shell/scripts/base16-solarflare.sh
 end
 
 # Login shell
 #------------
 if status --is-login
-  source $HOME/.config/fish/login.fish
+    # neofetch prints system info on login
+    echo
+    neofetch
 end
