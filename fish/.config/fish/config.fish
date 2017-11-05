@@ -8,6 +8,9 @@ source /usr/local/share/chruby/auto.fish
 if status --is-interactive
     # Base16 shell colors
     eval sh $HOME/.config/base16-shell/scripts/base16-solarflare.sh
+
+    # BUG: Already set as universal variable, should not need to set here
+    set -U fish_escape_delay_ms 10
 end
 
 # Login shell
