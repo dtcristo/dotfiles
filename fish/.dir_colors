@@ -463,6 +463,7 @@ CAPABILITY 48;5;1;38;5;0
 
 # Archives, compressed (color05 - base05 - violet)
 .7z 38;5;5
+.a 38;5;5
 .apk 38;5;5
 .ace 38;5;5
 .arj 38;5;5
