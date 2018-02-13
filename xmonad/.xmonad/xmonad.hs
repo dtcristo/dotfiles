@@ -26,9 +26,10 @@ myManageHook = composeAll . concat $
         tFloats = ["File Operation Progress", "Float"]
 
 myKeys =
-    [ ("M-f", spawn "firefox-beta")
+    [ ("M-f", spawn "firefox")
     , ("M-c", spawn "chromium")
     , ("M-p", spawn "rofi -show drun")
+    , ("M-S-l", spawn "dm-tool lock")
     ] ++
     [ (otherModMasks ++ "M-" ++ [key], action tag) | (tag, key) <- zip myWorkspaces "123456789"
     , (otherModMasks, action) <-
