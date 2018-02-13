@@ -2,6 +2,9 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Insert or delete brackets, parens, quotes in pair
 Plug 'jiangmiao/auto-pairs'
 
+" Add 'end' to ruby 'def'
+Plug 'tpope/vim-endwise'
+
 " Easy commenting
 Plug 'scrooloose/nerdcommenter'
 
@@ -54,6 +57,9 @@ Plug 'tpope/vim-surround'
 " Plugin support for repeating
 Plug 'tpope/vim-repeat'
 
+" Handy mappings on brackets
+Plug 'tpope/vim-unimpaired'
+
 " Initialize plugin system
 call plug#end()
 
@@ -70,12 +76,11 @@ set wildignore+=*/.git/*,*/tmp/*,*.swp,*/node_modules/*
 let g:rg_highlight = 'true'
 
 " Color schemes
-let base16colorspace=256 " Access colors present in 256 colorspace
+let g:base16colorspace=256 " Access colors present in 256 colorspace
 colorscheme base16-solarflare
 
 " Misc settings
 filetype plugin indent on
-let mapleader = "\<Space>" " Use space for leader key
 set number relativenumber  " Show line numbers
 set list            " Show invisible characters
 set tabstop=8       " Width of a tab character
@@ -84,25 +89,21 @@ set expandtab       " Expand tabs to spaces
 set scrolloff=10    " Never let cursor hit bottom
 set cursorline      " Highlight current line
 set synmaxcol=300   " Kill syntax highlighting after column 300
-let g:hardtime_default_on = 1 " Hard mode enabled
 
-" Auto toggle out of relative numbers for unfocused split
-augroup numbertoggle
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-augroup END
+" Status bar
+set noshowmode  " remove duplicate mode indicator
+let g:lightline = { 'colorscheme': 'base16_solarflare' }
 
-" File type config
-au FileType typescript setl sw=4 sts=4 et
+" Hard mode enabled
+let g:hardtime_default_on = 1
 
 " NERDTree
-let NERDTreeShowLineNumbers=1
-let NERDTreeWinSize=35
-let NERDTreeShowHidden=1
+let g:NERDTreeShowLineNumbers=1
+let g:NERDTreeWinSize=35
+let g:NERDTreeShowHidden=1
 
 " Key bindings
-let mapleader = "\<Space>" " Use space for leader key
+let g:mapleader = '\<Space>' " Use space for leader key
 nnoremap <silent> <leader>t :NERDTreeToggle<CR>
 nnoremap <silent> <leader>f :NERDTreeFind<CR>
 " Tab navigation and movement
@@ -128,25 +129,36 @@ nnoremap <silent> <M-^> :tabmove 5<return>
 nnoremap <silent> <M-&> :tabmove 6<return>
 nnoremap <silent> <M-*> :tabmove 7<return>
 nnoremap <silent> <M-(> :tabmove 8<return>
-" Quickfix list navigation
-nnoremap <silent> <M-n> :cnext<return>
-nnoremap <silent> <M-N> :cprev<return>
-" Clear highlighting on space
-"nnoremap <silent> <return> :noh<return><return>
 " Ctrl-s for save
 nnoremap <silent> <C-s> :update<return>
 inoremap <silent> <C-s> <esc>:update<return>
 " Ctrl-\ for toggle word wrap
 nnoremap <silent> <C-\> :set wrap!<return>
 
-au BufEnter * call OnBufEnter()
+" Run rustfmt on save
+let g:rustfmt_autosave = 1
+
+" Syntastic configuration
+set statusline+=%#warningmsg#
+set statusline+=%{syntasticstatuslineflag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" vim-vroom config
+let g:vroom_use_terminal = 1  " Enable Neovim terminal for tests
+let g:vroom_use_bundle_exec = 0
+let g:vroom_test_unit_command = 'm'
+
 function! OnBufEnter()
   " Automatically enter insert mode in terminal buffers
-  if &buftype=="terminal"
+  if &buftype=='terminal'
+    echom 'hello terminal'
     startinsert
-  endif
   " Automatically quit Vim if quickfix window is the last
-  if &buftype=="quickfix" || &buftype=="nofile"
+  elseif &buftype=='quickfix' || &buftype=='nofile'
     " if this window is last on screen quit without warning
     if winbufnr(2) == -1
       quit!
@@ -154,30 +166,18 @@ function! OnBufEnter()
   endif
 endfunction
 
-" Auto watch init.vim for changes and reload
-autocmd BufWritePost init.vim source $MYVIMRC
-
-" Remove trailing whitespace on save
-autocmd BufWritePre * %s/\s\+$//e
-
-" Status bar
-set noshowmode      " Remove duplicate mode indicator
-let g:lightline = { 'colorscheme': 'base16_solarflare' }
-
-" Run rustfmt on save
-let g:rustfmt_autosave = 1
-
-" Syntastic configuration
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-" vim-vroom config
-let g:vroom_use_terminal = 1            " Enable NeoVim terminal for tests
-let g:vroom_use_bundle_exec = 0
-let g:vroom_test_unit_command = 'm'
+" Autocommands
+augroup Misc
+  autocmd!
+  " Trigger OnBufEnter callback
+  autocmd BufEnter * call OnBufEnter()
+  " Remove trailing whitespace on save
+  autocmd BufWritePre * %s/\s\+$//e
+  " Auto watch init.vim for changes and reload
+  autocmd BufWritePost init.vim source $MYVIMRC
+  " Auto toggle out of relative numbers for unfocused split
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
+  " File type config
+  autocmd FileType typescript setl sw=4 sts=4 et
+augroup END
