@@ -1,6 +1,9 @@
 call plug#begin('~/.local/share/nvim/plugged')
-" Auto close brackets
-Plug 'Townk/vim-autoclose'
+" Insert or delete brackets, parens, quotes in pair
+Plug 'jiangmiao/auto-pairs'
+
+" Easy commenting
+Plug 'scrooloose/nerdcommenter'
 
 " ripgrep plugin
 Plug 'jremmen/vim-ripgrep'
@@ -13,9 +16,11 @@ Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
 
 " Language support
-Plug 'elixir-lang/vim-elixir'
-Plug 'isRuslan/vim-es6'
+Plug 'pangloss/vim-javascript'
+Plug 'elixir-editors/vim-elixir'
+Plug 'rust-lang/rust.vim'
 Plug 'leafgarland/typescript-vim'
+Plug 'ElmCast/elm-vim'
 Plug 'tpope/vim-rails'
 Plug 'dag/vim-fish'
 Plug 'rhysd/vim-crystal'
@@ -33,6 +38,21 @@ Plug 'takac/vim-hardtime'
 
 " Multiple cursors
 Plug 'terryma/vim-multiple-cursors'
+
+" Syntax checking
+Plug 'vim-syntastic/syntastic'
+
+" File type icons
+"Plug 'ryanoasis/vim-devicons'
+
+" Run ruby tests
+Plug 'skalnik/vim-vroom'
+
+" Easy editing around things
+Plug 'tpope/vim-surround'
+
+" Plugin support for repeating
+Plug 'tpope/vim-repeat'
 
 " Initialize plugin system
 call plug#end()
@@ -73,9 +93,12 @@ augroup numbertoggle
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
 
+" File type config
+au FileType typescript setl sw=4 sts=4 et
+
 " NERDTree
 let NERDTreeShowLineNumbers=1
-let NERDTreeWinSize=40
+let NERDTreeWinSize=35
 let NERDTreeShowHidden=1
 
 " Key bindings
@@ -111,14 +134,18 @@ nnoremap <silent> <M-N> :cprev<return>
 " Clear highlighting on space
 "nnoremap <silent> <return> :noh<return><return>
 " Ctrl-s for save
-nnoremap <silent> <C-s> :w<return>
+nnoremap <silent> <C-s> :update<return>
+inoremap <silent> <C-s> <esc>:update<return>
 " Ctrl-\ for toggle word wrap
 nnoremap <silent> <C-\> :set wrap!<return>
 
-" Automatically quit Vim if quickfix window is the last
-au BufEnter * call MyLastWindow()
-function! MyLastWindow()
-  " if the window is quickfix go on
+au BufEnter * call OnBufEnter()
+function! OnBufEnter()
+  " Automatically enter insert mode in terminal buffers
+  if &buftype=="terminal"
+    startinsert
+  endif
+  " Automatically quit Vim if quickfix window is the last
   if &buftype=="quickfix" || &buftype=="nofile"
     " if this window is last on screen quit without warning
     if winbufnr(2) == -1
@@ -127,8 +154,8 @@ function! MyLastWindow()
   endif
 endfunction
 
-" Auto watch vimrc for changes and reload
-autocmd BufWritePost init.vim,.vimrc,_vimrc source $MYVIMRC
+" Auto watch init.vim for changes and reload
+autocmd BufWritePost init.vim source $MYVIMRC
 
 " Remove trailing whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
@@ -136,3 +163,21 @@ autocmd BufWritePre * %s/\s\+$//e
 " Status bar
 set noshowmode      " Remove duplicate mode indicator
 let g:lightline = { 'colorscheme': 'base16_solarflare' }
+
+" Run rustfmt on save
+let g:rustfmt_autosave = 1
+
+" Syntastic configuration
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" vim-vroom config
+let g:vroom_use_terminal = 1            " Enable NeoVim terminal for tests
+let g:vroom_use_bundle_exec = 0
+let g:vroom_test_unit_command = 'm'
