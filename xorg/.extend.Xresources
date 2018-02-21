@@ -1,5 +1,8 @@
-URxvt.font: xft:Iosevka Term:size=12
+Xcursor.theme: Paper
+
+URxvt.font: xft:Iosevka:size=16
 URxvt.boldFont:
+URxvt.scrollBar: false
 
 rofi.theme: solarflare
 
