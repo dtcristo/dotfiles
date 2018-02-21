@@ -103,7 +103,7 @@ let g:NERDTreeWinSize=35
 let g:NERDTreeShowHidden=1
 
 " Key bindings
-let g:mapleader = '\<Space>' " Use space for leader key
+let g:mapleader = "\<Space>" " Use space for leader key
 nnoremap <silent> <leader>t :NERDTreeToggle<CR>
 nnoremap <silent> <leader>f :NERDTreeFind<CR>
 " Tab navigation and movement
