@@ -1,4 +1,6 @@
 URxvt.font: xft:Iosevka Term:size=12
 URxvt.boldFont:
 
+rofi.theme: solarflare
+
 #include ".Xresources.d/base16-solarflare-256.Xresources"
