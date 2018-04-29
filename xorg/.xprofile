@@ -1,8 +1,14 @@
-# Disable system bell
-xset -b
+# Autostarts applications in ~/.config/autostart/ and /etc/xdg/autostart/
+dex --autostart
 
-# Ctrl acts as Esc, Shift keys swtich spaces in Xfce.
-# xcape -t 200 -e 'Control_L=Escape;Shift_L=Control_R|Alt_R|Left;Shift_R=Control_R|Alt_R|Right'
+# Start file manager in the background
+thunar --daemon
+
+# Disable system bell
+#xset -b
+
+# Ctrl acts as Esc, Shift keys swtich spaces in Xfce
+#xcape -t 200 -e 'Control_L=Escape;Shift_L=Control_R|Alt_R|Left;Shift_R=Control_R|Alt_R|Right'
 
 # Fix UI scaling issues with Qt
 export QT_AUTO_SCREEN_SCALE_FACTOR=0
