@@ -7,7 +7,7 @@ userprofile=$HOME/.xprofile
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
 
-# merge in defaults and keymaps
+# set profile, merge in defaults and keymaps
 
 if [ -f $sysprofile ]; then
     . $sysprofile
