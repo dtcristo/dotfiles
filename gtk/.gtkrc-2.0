@@ -1,6 +1,6 @@
+gtk-icon-theme-name = "Paper"
 gtk-theme-name = "Adapta"
 gtk-font-name = "Roboto 12"
-gtk-icon-theme-name = "Paper"
 
 # Base16 Solar Flare for gtk2 (https://github.com/dawikur/base16-gtk2)
 # By Chuck Harmston (https://chuck.harmston.ch)
