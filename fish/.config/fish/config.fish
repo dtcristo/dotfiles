@@ -1,13 +1,19 @@
 # chruby, ruby version switcher
 set -gx CHRUBY_ROOT /usr
-source /usr/local/share/chruby/chruby.fish
-source /usr/local/share/chruby/auto.fish
+if test -f /usr/local/share/chruby/chruby.fish
+  source /usr/local/share/chruby/chruby.fish
+end
+if test -f /usr/local/share/chruby/auto.fish
+  source /usr/local/share/chruby/auto.fish
+end
 
 # Interactive shell
 #------------------
 if status --is-interactive
     # Base16 shell colors
-    eval sh $HOME/.config/base16-shell/scripts/base16-solarflare.sh
+    if test -f $HOME/.config/base16-shell/scripts/base16-solarflare.sh
+      eval sh $HOME/.config/base16-shell/scripts/base16-solarflare.sh
+    end
 
     # BUG: Already set as universal variable, should not need to set here
     set -U fish_escape_delay_ms 10
