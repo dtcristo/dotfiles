@@ -95,7 +95,7 @@ set noshowmode  " remove duplicate mode indicator
 let g:lightline = { 'colorscheme': 'base16_solarflare' }
 
 " Hard mode enabled
-let g:hardtime_default_on = 1
+let g:hardtime_default_on = 0
 
 " NERDTree
 let g:NERDTreeShowLineNumbers=1
