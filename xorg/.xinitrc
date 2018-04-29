@@ -1,45 +1,58 @@
 #!/bin/sh
 
-sysprofile=/etc/xprofile
-sysresources=/etc/X11/xinit/.Xresources
-sysmodmap=/etc/X11/xinit/.Xmodmap
-userprofile=$HOME/.xprofile
-userresources=$HOME/.Xresources
-usermodmap=$HOME/.Xmodmap
+# Load profile
+for file in "/etc/xprofile" "$HOME/.xprofile"; do
+    if [ -f "$file" ]; then
+        echo "Loading profile from $file";
+        . "$file"
+    fi
+done
 
-# source profile, merge in defaults and keymaps
+# Load resources
+for file in "/etc/X11/Xresources" "$HOME/.Xresources"; do
+    if [ -f "$file" ]; then
+        echo "Loading resource: $file"
+        xrdb -merge "$file"
+    fi
+done
 
-if [ -f $sysprofile ]; then
-    . $sysprofile
-fi
+# Load keymaps
+for file in "/etc/X11/Xkbmap" "$HOME/.Xkbmap"; do
+    if [ -f "$file" ]; then
+        echo "Loading keymap: $file"
+        setxkbmap `cat "$file"`
+        XKB_IN_USE=yes
+    fi
+done
 
-if [ -f $sysresources ]; then
-    xrdb -merge $sysresources
-fi
-
-if [ -f $sysmodmap ]; then
-    xmodmap $sysmodmap
-fi
-
-if [ -f "$userprofile" ]; then
-    . "$userprofile"
-fi
-
-if [ -f "$userresources" ]; then
-    xrdb -merge "$userresources"
-fi
-
-if [ -f "$usermodmap" ]; then
-    xmodmap "$usermodmap"
-fi
-
-# start some nice programs
-
-if [ -d /etc/X11/xinit/xinitrc.d ] ; then
-    for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
-        [ -x "$f" ] && . "$f"
+# Load xmodmap if not using XKB
+if [ -z "$XKB_IN_USE" ]; then
+    for file in "/etc/X11/Xmodmap" "$HOME/.Xmodmap"; do
+        if [ -f "$file" ]; then
+           echo "Loading modmap: $file"
+           xmodmap "$file"
+        fi
     done
-    unset f
+fi
+
+unset XKB_IN_USE
+
+# Run all system xinitrc shell scripts
+xinitdir="/etc/X11/xinit/xinitrc.d"
+if [ -d "$xinitdir" ]; then
+    for script in $xinitdir/*; do
+        echo "Loading xinit script $script"
+        if [ -x "$script" -a ! -d "$script" ]; then
+            . "$script"
+        fi
+    done
+fi
+
+# Run user xsession shell script
+script="$HOME/.xsession"
+if [ -x "$script" -a ! -d "$script" ]; then
+    echo "Loading xsession script $script"
+    . "$script"
 fi
 
 exec i3
