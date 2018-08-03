@@ -13,11 +13,14 @@ function setup_fish
     set -Ux EDITOR nvim
     set -Ux VISUAL nvim
     # Path for C/C++ headers
-    set -Ux CPATH /home/dtcristo/dev/crystal/cray/raylib/src:/home/dtcristo/dev/c/raygui/src:/usr/local/include:/usr/include
+    set -Ux CPATH /home/dtcristo/dev/crystal/cray/raylib/src:/usr/local/include:/usr/include
     # Path to find static libraries
     set -Ux LIBRARY_PATH /home/dtcristo/dev/crystal/crsfml/voidcsfml:/home/dtcristo/dev/crystal/cray:/home/dtcristo/lib:/usr/local/lib:/usr/lib
     # Path to find dynamic libraries
     set -Ux LD_LIBRARY_PATH $LIBRARY_PATH
+
+    # Fix rmagick install
+    set -Ux PKG_CONFIG_PATH /usr/lib/imagemagick6/pkgconfig:/usr/lib/pkgconfig
 
     # Clear fish greeting
     #--------------
