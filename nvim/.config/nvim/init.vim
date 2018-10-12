@@ -27,6 +27,7 @@ Plug 'ElmCast/elm-vim'
 Plug 'tpope/vim-rails'
 Plug 'dag/vim-fish'
 Plug 'rhysd/vim-crystal'
+Plug 'kovetskiy/sxhkd-vim'
 
 " Git support
 Plug 'tpope/vim-fugitive'
