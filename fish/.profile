@@ -13,3 +13,6 @@ if [ -d "$HOME/bin" ] ; then
 fi
 
 PATH=".git/safe/../../bin:$PATH"
+
+XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CONFIG_HOME
