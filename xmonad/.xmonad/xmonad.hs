@@ -8,7 +8,8 @@ import XMonad.Layout.LayoutHints (hintsEventHook)
 import XMonad.Layout.NoBorders (smartBorders)
 import XMonad.Layout.Fullscreen (fullscreenManageHook)
 import qualified XMonad.StackSet as W
-import XMonad.Util.EZConfig (additionalKeysP)
+import XMonad.Util.EZConfig (additionalKeysP, additionalMouseBindings)
+import XMonad.Actions.CycleWS (toggleWS, prevWS, nextWS, shiftToPrev, shiftToNext)
 
 -- Windows/Super key
 myModMask = mod4Mask
@@ -33,6 +34,11 @@ myKeys =
     , ("M-S-z", spawn "zeal")
     , ("M-p", spawn "rofi -show drun")
     , ("M-S-l", spawn "dm-tool lock")
+    , ("M-<Escape>", toggleWS)
+    , ("M-<Left>", prevWS)
+    , ("M-<Right>", nextWS)
+    , ("M-S-<Left>", shiftToPrev)
+    , ("M-S-<Right>", shiftToNext)
     ] ++
     [ (otherModMasks ++ "M-" ++ [key], action tag) | (tag, key) <- zip myWorkspaces "123456789"
     , (otherModMasks, action) <-
@@ -40,6 +46,13 @@ myKeys =
         , ("S-", windows . W.shift)
         ]
     ]
+
+myMouseBindings =
+  [ ((0, 6 :: Button), (\w -> focus w >> prevWS))
+  , ((0, 7 :: Button), (\w -> focus w >> nextWS))
+  , ((shiftMask, 6 :: Button), (\w -> focus w >> shiftToPrev >> prevWS))
+  , ((shiftMask, 7 :: Button), (\w -> focus w >> shiftToNext >> nextWS))
+  ]
 
 main = xmonad $ xfceConfig
     { modMask = myModMask
@@ -57,3 +70,4 @@ main = xmonad $ xfceConfig
         spawn "kill -9 $(pgrep xfce4-panel)"
     }
     `additionalKeysP` myKeys
+    `additionalMouseBindings` myMouseBindings
