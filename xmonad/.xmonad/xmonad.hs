@@ -37,8 +37,8 @@ myKeys =
     , ("M-<Escape>", toggleWS)
     , ("M-<Left>", prevWS)
     , ("M-<Right>", nextWS)
-    , ("M-S-<Left>", shiftToPrev)
-    , ("M-S-<Right>", shiftToNext)
+    , ("M-S-<Left>", shiftToPrev >> prevWS)
+    , ("M-S-<Right>", shiftToNext >> nextWS)
     ] ++
     [ (otherModMasks ++ "M-" ++ [key], action tag) | (tag, key) <- zip myWorkspaces "123456789"
     , (otherModMasks, action) <-
