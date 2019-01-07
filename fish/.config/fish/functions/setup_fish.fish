@@ -4,7 +4,7 @@ function setup_fish
     # User paths
     #-----------
     # echo '...setting user paths'
-    # set -U fish_user_paths /home/dtcristo/my_test/bin
+    set -U fish_user_paths /home/dtcristo/bin/crystal-0.27.0-1/bin
     # set -gx PATH /home/dtcristo/bin /home/dtcristo/.yarn/bin $PATH
 
     # Environment variables
@@ -13,9 +13,10 @@ function setup_fish
     set -Ux EDITOR nvim
     set -Ux VISUAL nvim
     # Path for C/C++ headers
-    set -Ux CPATH /home/dtcristo/dev/crystal/cray/raylib/src:/usr/local/include:/usr/include
+    # set -Ux CPATH /home/dtcristo/dev/crystal/cray/raylib/src:/usr/local/include:/usr/include
+    set -Ux CPATH /usr/local/include:/usr/include
     # Path to find static libraries
-    set -Ux LIBRARY_PATH /home/dtcristo/dev/crystal/crsfml/voidcsfml:/home/dtcristo/dev/crystal/cray:/home/dtcristo/lib:/usr/local/lib:/usr/lib
+    set -Ux LIBRARY_PATH /home/dtcristo/dev/crystal/crsfml/voidcsfml:/home/dtcristo/lib:/usr/local/lib:/usr/lib
     # Path to find dynamic libraries
     set -Ux LD_LIBRARY_PATH $LIBRARY_PATH
 
@@ -48,7 +49,6 @@ function setup_fish
     # Abbreviations
     #--------------
     echo '...setting abbreviations'
-    set -U fish_user_abbreviations
     abbr -a n 'nvim'
     abbr -a vi 'nvim'
     abbr -a vim 'nvim'
@@ -58,6 +58,5 @@ function setup_fish
     abbr -a tf 'terraform'
     abbr -a kc 'kubectl'
     abbr -a dig 'drill'
-    abbr -a to_staging 'git checkout staging; and git merge development; and git push; and git checkout development'
-    abbr -a to_master 'git checkout master; and git merge staging; and git push; and git checkout development'
+    abbr -a serve 'ruby -run -ehttpd .'
 end
