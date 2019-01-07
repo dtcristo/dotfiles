@@ -48,10 +48,10 @@ myKeys =
     ]
 
 myMouseBindings =
-  [ ((0, 6 :: Button), (\w -> focus w >> prevWS))
-  , ((0, 7 :: Button), (\w -> focus w >> nextWS))
-  , ((shiftMask, 6 :: Button), (\w -> focus w >> shiftToPrev >> prevWS))
-  , ((shiftMask, 7 :: Button), (\w -> focus w >> shiftToNext >> nextWS))
+  [ ((myModMask, 6 :: Button), (\w -> focus w >> prevWS))
+  , ((myModMask, 7 :: Button), (\w -> focus w >> nextWS))
+  , ((myModMask .|. shiftMask, 6 :: Button), (\w -> focus w >> shiftToPrev >> prevWS))
+  , ((myModMask .|. shiftMask, 7 :: Button), (\w -> focus w >> shiftToNext >> nextWS))
   ]
 
 main = xmonad $ xfceConfig
