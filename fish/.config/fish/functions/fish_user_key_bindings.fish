@@ -41,38 +41,6 @@ function fish_user_key_bindings
         end
     end
 
-    # Binding for '&&'
-    function bind_ampersand
-        set -l command (commandline)
-        set -l command_to_cursor (commandline -c)
-        set -l old_cursor (commandline -C)
-        switch (string sub -s -2 $command_to_cursor)
-            case ' &'
-                set -l front (string sub -l (math $old_cursor - 2) $command_to_cursor)
-                set -l back (string sub -s (math $old_cursor + 1) $command)
-                commandline "$front; and$back"
-                commandline -C (math $old_cursor + 3)
-            case '*'
-                commandline -i '&'
-        end
-    end
-
-    # Binding for '||'
-    function bind_pipe
-        set -l command (commandline)
-        set -l command_to_cursor (commandline -c)
-        set -l old_cursor (commandline -C)
-        switch (string sub -s -2 $command_to_cursor)
-            case ' |'
-                set -l front (string sub -l (math $old_cursor - 2) $command_to_cursor)
-                set -l back (string sub -s (math $old_cursor + 1) $command)
-                commandline "$front; or$back"
-                commandline -C (math $old_cursor + 2)
-            case '*'
-                commandline -i '|'
-        end
-    end
-
     # Bind bash compatibility when inserting
     if using_vi_key_bindings
         bind -M insert ! bind_bang
