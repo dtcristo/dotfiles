@@ -45,12 +45,8 @@ function fish_user_key_bindings
     if using_vi_key_bindings
         bind -M insert ! bind_bang
         bind -M insert '$' bind_dollar
-        bind -M insert '&' bind_ampersand
-        bind -M insert '|' bind_pipe
     else
         bind ! bind_bang
         bind '$' bind_dollar
-        bind '&' bind_ampersand
-        bind '|' bind_pipe
     end
 end
