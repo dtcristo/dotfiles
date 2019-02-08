@@ -1,11 +1,29 @@
-# Function sets up universal variables and preferenced
-function setup_fish
+function setup_fish --description 'Sets up universal variables and preferences'
     echo 'Starting fish_setup...'
+
+    # Bootstrap Fisher installation
+    #------------------------------
+    if not functions -q fisher
+        echo '...installing Fisher'
+        curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
+        fish -c fisher
+    end
+
     # User paths
     #-----------
-    # echo '...setting user paths'
-    set -U fish_user_paths /home/dtcristo/bin/crystal-0.27.0-1/bin
-    # set -gx PATH /home/dtcristo/bin /home/dtcristo/.yarn/bin $PATH
+    echo '...setting user paths'
+    set new_user_paths \
+        # .git/safe/../../bin \
+        $HOME/bin \
+        $HOME/go/bin \
+        $HOME/.yarn/bin \
+        $HOME/.cargo/bin
+    for x in $new_user_paths
+        # if not contains $x $fish_user_paths
+        if begin not contains $x $fish_user_paths; and test -d $x; end
+            set -U fish_user_paths $fish_user_paths $x
+        end
+    end
 
     # Environment variables
     #----------------------
@@ -13,23 +31,22 @@ function setup_fish
     set -Ux EDITOR nvim
     set -Ux VISUAL nvim
     # Path for C/C++ headers
-    # set -Ux CPATH /home/dtcristo/dev/crystal/cray/raylib/src:/usr/local/include:/usr/include
-    set -Ux CPATH /usr/local/include:/usr/include
+    # set -Ux CPATH /home/dtcristo/dev/crystal/cray/raylib/src /usr/local/include /usr/include
+    set -Ux CPATH /usr/local/include /usr/include
     # Path to find static libraries
-    set -Ux LIBRARY_PATH /home/dtcristo/dev/crystal/crsfml/voidcsfml:/home/dtcristo/lib:/usr/local/lib:/usr/lib
+    #set -Ux LIBRARY_PATH /home/dtcristo/lib /usr/local/lib /usr/lib
     # Path to find dynamic libraries
-    set -Ux LD_LIBRARY_PATH $LIBRARY_PATH
-
-    # Fix rmagick install
-    set -Ux PKG_CONFIG_PATH /usr/lib/imagemagick6/pkgconfig:/usr/lib/pkgconfig
+    #set -Ux LD_LIBRARY_PATH $LIBRARY_PATH
+    set -Ux PKG_CONFIG_PATH /usr/local/opt/openssl/lib/pkgconfig /usr/lib/pkgconfig
 
     # Clear fish greeting
-    #--------------
+    #--------------------
+    echo '...clearing greeting'
     set fish_greeting
 
     # Fish colors
     #------------
-    echo '...setting fish colors'
+    echo '...setting colors'
     setup_fish_colors
 
     # Vi mode
@@ -57,6 +74,5 @@ function setup_fish
     abbr -a oc 'overmind connect'
     abbr -a tf 'terraform'
     abbr -a kc 'kubectl'
-    abbr -a dig 'drill'
     abbr -a serve 'ruby -run -ehttpd .'
 end
