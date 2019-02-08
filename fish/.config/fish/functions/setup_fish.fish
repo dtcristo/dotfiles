@@ -1,5 +1,5 @@
 function setup_fish --description 'Sets up universal variables and preferences'
-    echo 'Starting fish_setup...'
+    echo 'Starting setup_fish...'
 
     # Bootstrap Fisher installation
     #------------------------------
@@ -14,7 +14,7 @@ function setup_fish --description 'Sets up universal variables and preferences'
     echo '...setting user paths'
     set new_user_paths \
         # .git/safe/../../bin \
-        $HOME/bin \
+        $HOME/.local/bin \
         $HOME/go/bin \
         $HOME/.yarn/bin \
         $HOME/.cargo/bin
@@ -30,19 +30,21 @@ function setup_fish --description 'Sets up universal variables and preferences'
     echo '...setting environment variables'
     set -Ux EDITOR nvim
     set -Ux VISUAL nvim
-    # Path for C/C++ headers
-    # set -Ux CPATH /home/dtcristo/dev/crystal/cray/raylib/src /usr/local/include /usr/include
-    set -Ux CPATH /usr/local/include /usr/include
-    # Path to find static libraries
-    #set -Ux LIBRARY_PATH /home/dtcristo/lib /usr/local/lib /usr/lib
-    # Path to find dynamic libraries
-    #set -Ux LD_LIBRARY_PATH $LIBRARY_PATH
-    set -Ux PKG_CONFIG_PATH /usr/local/opt/openssl/lib/pkgconfig /usr/lib/pkgconfig
+    # Paths to find C/C++ headers
+    # set -Ux CPATH $HOME/.local/include /usr/local/include /usr/include
+    # set -Ux CPPFLAGS "-I$HOME/.local/include -I/usr/local/include -I/usr/include"
+    # Paths to find static libraries
+    # set -Ux LIBRARY_PATH $HOME/.local/lib /usr/local/lib /usr/lib
+    # set -Ux LDFLAGS "-L/usr/local/lib -L/usr/lib"
+    # Paths to find dynamic libraries
+    # set -Ux LD_LIBRARY_PATH $LIBRARY_PATH
+    # Paths in which pkg-config will search for its .pc files
+    # set -Ux PKG_CONFIG_PATH $HOME/.local/lib/pkgconfig /usr/local/lib/pkgconfig /usr/lib/pkgconfig
 
     # Clear fish greeting
     #--------------------
     echo '...clearing greeting'
-    set fish_greeting
+    set -U fish_greeting
 
     # Fish colors
     #------------
