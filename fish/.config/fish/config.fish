@@ -20,6 +20,12 @@ if status --is-interactive
         eval sh $HOME/.config/base16/base16-material-alt.sh
     end
 
+    # Source .dir_colors on macOS and use coreutils `ls`
+    if test (uname) = "Darwin"
+        eval (gdircolors --c-shell $HOME/dotfiles/shell/.dir_colors)
+        alias ls='gls --color'
+    end
+
     # Interactive login shell
     #------------------------
     if status --is-login
