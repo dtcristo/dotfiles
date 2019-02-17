@@ -13,14 +13,18 @@ function setup_fish --description 'Sets up universal variables and preferences'
     #-----------
     echo '...setting user paths'
     set new_user_paths \
-        # .git/safe/../../bin \
         $HOME/.local/bin \
-        $HOME/go/bin \
+        $HOME/.cargo/bin \
         $HOME/.yarn/bin \
-        $HOME/.cargo/bin
+        $HOME/go/bin \
+        /usr/local/sbin \
+        /usr/local/bin \
+        /usr/sbin \
+        /usr/bin \
+        /sbin \
+        /bin
     for x in $new_user_paths
-        # if not contains $x $fish_user_paths
-        if begin not contains $x $fish_user_paths; and test -d $x; end
+        if not contains $x $PATH && not contains $x $fish_user_paths && test -d $x
             set -U fish_user_paths $fish_user_paths $x
         end
     end
