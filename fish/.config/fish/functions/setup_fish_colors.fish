@@ -6,7 +6,7 @@ function setup_fish_colors
     # color02 base0B Green                solarized_green
     # color03 base0A Yellow               solarized_yellow
     # color04 base0D Blue                 solarized_blue
-    # color05 base0E Magenta              solarized_violet        (Violet)
+    # color05 base0E Magenta              solarized_violet
     # color06 base0C Cyan                 solarized_cyan
     # color07 base05 White                solarized_base1
     # color08 base03 Bright_Black         *solarized_base00
@@ -20,8 +20,8 @@ function setup_fish_colors
     #
     # 256 colors
     #-----------
-    # color16 base09                      solarized_orange        (Orange)
-    # color17 base0F                      solarized_magenta       (Magenta)
+    # color16 base09                      solarized_orange
+    # color17 base0F                      solarized_magenta
     # color18 base01                      ^solarized_base02
     # color19 base02                      solarized_base01
     # color20 base04                      ^solarized_base0
@@ -35,29 +35,29 @@ function setup_fish_colors
     # Background tones
     set -U color_base00 "black"
     # set -U color_base01 "222E38"
-    set -U color_base01 "2E3C43"
+    set -U color_base01 "303C41"
     # Content tones
     # set -U color_base02 "586875"
-    set -U color_base02 "314549"
+    set -U color_base02 "37474F"
     set -U color_base03 "brblack"
     # set -U color_base04 "85939E"
     set -U color_base04 "B2CCD6"
     set -U color_base05 "white"
     # Background tones
     # set -U color_base06 "E8E9ED"
-    set -U color_base06 "EEFFFF"
+    set -U color_base06 "FAFAFA"
     set -U color_base07 "brwhite"
     # Accent colors
     set -U color_base08 "red"
-    # set -U color_base09 "E66B2B"   # Orange
-    set -U color_base09 "F78C6C"   # Orange
+    # set -U color_base09 "E66B2B"
+    set -U color_base09 "F78C6C"
     set -U color_base0A "yellow"
     set -U color_base0B "green"
     set -U color_base0C "cyan"
     set -U color_base0D "blue"
-    set -U color_base0E "magenta"  # Violet
-    # set -U color_base0F "D73C9A"   # Magenta
-    set -U color_base0F "FF5370"   # Magenta
+    set -U color_base0E "magenta"
+    # set -U color_base0F "D73C9A"
+    set -U color_base0F "C17E70"
     # Color aliases
     set -U color_background $color_base00
     set -U color_comment    $color_base03
@@ -69,8 +69,8 @@ function setup_fish_colors
     set -U color_green      $color_base0B
     set -U color_cyan       $color_base0C
     set -U color_blue       $color_base0D
-    set -U color_violet     $color_base0E
-    set -U color_magenta    $color_base0F
+    set -U color_magenta    $color_base0E
+    set -U color_brown      $color_base0F
 
     # Debug prints
     #-------------
@@ -96,13 +96,13 @@ function setup_fish_colors
     set -U fish_color_normal $color_primary # the default color
     set -U fish_color_command $color_blue # the color for commands
     set -U fish_color_quote $color_cyan # the color for quoted blocks of text
-    set -U fish_color_selection $color_red '--bold' "--background=$color_comment"
-    set -U fish_color_redirection $color_red # the color for IO redirections
+    set -U fish_color_redirection $color_brown # the color for IO redirections
     set -U fish_color_end $color_green # the color for process separators like ';' and '&'
     set -U fish_color_error $color_red # the color used to highlight potential errors
-    set -U fish_color_param $color_violet # the color for regular command parameters
+    set -U fish_color_param $color_magenta # the color for regular command parameters
     set -U fish_color_comment $color_comment # the color used for code comments
     set -U fish_color_match $color_cyan # the color used to highlight matching parenthesis
+    set -U fish_color_selection $color_red '--bold' "--background=$color_comment"
     set -U fish_color_search_match "--background=$color_comment" # the color used to highlight history search matches
     set -U fish_color_operator $color_orange # the color for parameter expansion operators like '*' and '~'
     set -U fish_color_escape $color_yellow # the color used to highlight character escapes like '\n' and '\x70'
