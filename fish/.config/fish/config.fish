@@ -16,8 +16,8 @@ end
 #------------------
 if status --is-interactive
     # Base16 shell colors
-    if test -f $HOME/.config/base16-shell/scripts/base16-material.sh
-        eval sh $HOME/.config/base16-shell/scripts/base16-material.sh
+    if test -f $HOME/.config/base16/base16-material-alt.sh
+        eval sh $HOME/.config/base16/base16-material-alt.sh
     end
 
     # Interactive login shell
