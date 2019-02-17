@@ -4,6 +4,6 @@ URxvt.font: xft:Iosevka:size=16
 URxvt.boldFont:
 URxvt.scrollBar: false
 
-rofi.theme: solarflare
+rofi.theme: base16-material
 
-#include ".Xresources.d/base16-solarflare-256.Xresources"
+#include ".Xresources.d/base16-material-256.Xresources"
