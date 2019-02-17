@@ -1,6 +1,6 @@
 # Dotfiles
 
-Personal dotfiles for an Arch Linux system.
+Personal dotfiles for an Arch Linux and macOS systems.
 
 Clone repo into `~/dotfiles`
 ```sh
