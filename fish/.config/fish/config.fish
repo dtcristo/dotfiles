@@ -25,5 +25,5 @@ end
 #------------
 if status --is-login
     # Clear screen and print system info on login
-    # clear; echo; neofetch
+    clear; echo; neofetch
 end
