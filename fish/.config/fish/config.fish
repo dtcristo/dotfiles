@@ -24,6 +24,8 @@ end
 # Login shell
 #------------
 if status --is-login
-    # Clear screen and print system info on login
-    clear; echo; neofetch
+    # Clear screen and print system info on login (non macOS)
+    if test (uname) != "Darwin"
+        clear; echo; neofetch
+    end
 end
