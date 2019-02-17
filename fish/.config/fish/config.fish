@@ -7,7 +7,7 @@
 #   source /usr/local/share/chruby/auto.fish
 # end
 
-# asdf, version switcher 
+# asdf, version switcher
 if test -f /usr/local/opt/asdf/asdf.fish
   source /usr/local/opt/asdf/asdf.fish
 end
@@ -16,8 +16,8 @@ end
 #------------------
 if status --is-interactive
     # Base16 shell colors
-    if test -f $HOME/.config/base16-shell/scripts/base16-solarflare.sh
-        eval sh $HOME/.config/base16-shell/scripts/base16-solarflare.sh
+    if test -f $HOME/.config/base16-shell/scripts/base16-material.sh
+        eval sh $HOME/.config/base16-shell/scripts/base16-material.sh
     end
 end
 

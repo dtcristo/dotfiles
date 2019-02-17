@@ -78,7 +78,7 @@ let g:rg_highlight = 'true'
 
 " Color schemes
 let g:base16colorspace=256 " Access colors present in 256 colorspace
-colorscheme base16-solarflare
+colorscheme base16-material
 
 " Misc settings
 filetype plugin indent on
@@ -93,7 +93,7 @@ set synmaxcol=300   " Kill syntax highlighting after column 300
 
 " Status bar
 set noshowmode  " remove duplicate mode indicator
-let g:lightline = { 'colorscheme': 'base16_solarflare' }
+let g:lightline = { 'colorscheme': 'base16_material' }
 
 " Hard mode enabled
 let g:hardtime_default_on = 0
