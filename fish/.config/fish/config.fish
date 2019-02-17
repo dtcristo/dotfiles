@@ -19,13 +19,13 @@ if status --is-interactive
     if test -f $HOME/.config/base16-shell/scripts/base16-material.sh
         eval sh $HOME/.config/base16-shell/scripts/base16-material.sh
     end
-end
 
-# Login shell
-#------------
-if status --is-login
-    # Clear screen and print system info on login (non macOS)
-    if test (uname) != "Darwin"
-        clear; echo; neofetch
+    # Interactive login shell
+    #------------------------
+    if status --is-login
+        # Clear screen and print system info on login (non macOS)
+        if test (uname) != "Darwin"
+            clear; echo; neofetch
+        end
     end
 end
