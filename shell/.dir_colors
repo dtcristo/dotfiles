@@ -100,18 +100,18 @@ FILE 00
 # directory (color04 - base0D - blue)
 DIR 38;5;4
 
-# symbolic link (color17 - base0F - magenta)
-LINK 38;5;17
-# regular file with more than one link (color00 - base0) on [color17 - base0F - magenta]
-MULTIHARDLINK 48;5;17;38;5;0
+# symbolic link (color05 - base0E - magenta)
+LINK 38;5;5
+# regular file with more than one link (color00 - base0) on [color05 - base0E - magenta]
+MULTIHARDLINK 48;5;5;38;5;0
 
-# pipe, socket and door (color00 - base0) on [color05 - base0E - violet]
-FIFO 48;5;5;38;5;0
-SOCK 48;5;5;38;5;0
-DOOR 48;5;5;38;5;0 # Solaris 2.5 and later
+# pipe, socket and door (color00 - base0) on [color17 - base0F - brown]
+FIFO 48;5;17;38;5;0
+SOCK 48;5;17;38;5;0
+DOOR 48;5;17;38;5;0 # Solaris 2.5 and later
 
-# block device driver (color05 - base0E - violet)
-BLK 38;5;5
+# block device driver (color17 - base0F - brown)
+BLK 38;5;17
 # character device driver (color06 - base0C - cyan)
 CHR 38;5;6
 
@@ -332,14 +332,14 @@ CAPABILITY 48;5;1;38;5;0
 .go 38;5;6
 .sql 38;5;6
 
-# Text data files (color05 - base05 - violet)
-.json 38;5;5
-.csv 38;5;5
-.yml 38;5;5
-.yaml 38;5;5
-.toml 38;5;5
-.xml 38;5;5
-.cson 38;5;5
+# Text data files (color17 - base0F - brown)
+.json 38;5;17
+.csv 38;5;17
+.yml 38;5;17
+.yaml 38;5;17
+.toml 38;5;17
+.xml 38;5;17
+.cson 38;5;17
 
 ### Multimedia formats
 
@@ -461,47 +461,47 @@ CAPABILITY 48;5;1;38;5;0
 .enc 38;5;1
 .sqlite 38;5;1
 
-# Archives, compressed (color05 - base05 - violet)
-.7z 38;5;5
-.a 38;5;5
-.apk 38;5;5
-.ace 38;5;5
-.arj 38;5;5
-.taz 38;5;5
-.lzh 38;5;5
-.lzma 38;5;5
-.tlz 38;5;5
-.txz 38;5;5
-.bin 38;5;5
-.bz 38;5;5
-.bz2 38;5;5
-.cab 38;5;5 # Win
-.deb 38;5;5
-.dmg 38;5;5 # OSX
-.gem 38;5;5
-.dz 38;5;5
-.gz 38;5;5
-.lz 38;5;5
-.tz 38;5;5
-.iso 38;5;5
-.jar 38;5;5
-.msi 38;5;5 # Win
-.rar 38;5;5
-.rpm 38;5;5
-.tar 38;5;5
-.tbz 38;5;5
-.tbz2 38;5;5
-.tgz 38;5;5
-.tx 38;5;5
-.war 38;5;5
-.xpi 38;5;5
-.xz 38;5;5
-.z 38;5;5
-.Z 38;5;5
-.zoo 38;5;5
-.cpio 38;5;5
-.rz 38;5;5
-.zip 38;5;5
+# Archives, compressed (color17 - base0F - brown)
+.7z 38;5;17
+.a 38;5;17
+.apk 38;5;17
+.ace 38;5;17
+.arj 38;5;17
+.taz 38;5;17
+.lzh 38;5;17
+.lzma 38;5;17
+.tlz 38;5;17
+.txz 38;5;17
+.bin 38;5;17
+.bz 38;5;17
+.bz2 38;5;17
+.cab 38;5;17 # Win
+.deb 38;5;17
+.dmg 38;5;17 # OSX
+.gem 38;5;17
+.dz 38;5;17
+.gz 38;5;17
+.lz 38;5;17
+.tz 38;5;17
+.iso 38;5;17
+.jar 38;5;17
+.msi 38;5;17 # Win
+.rar 38;5;17
+.rpm 38;5;17
+.tar 38;5;17
+.tbz 38;5;17
+.tbz2 38;5;17
+.tgz 38;5;17
+.tx 38;5;17
+.war 38;5;17
+.xpi 38;5;17
+.xz 38;5;17
+.z 38;5;17
+.Z 38;5;17
+.zoo 38;5;17
+.cpio 38;5;17
+.rz 38;5;17
+.zip 38;5;17
 
 # Unimportant files (color08 - base03)
 .log 38;5;8
