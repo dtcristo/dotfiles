@@ -84,7 +84,7 @@
 # ]
 
 # Open new iTerm window
-alt - return : osascript -e 'tell application "iTerm2" to create window with default profile'
+shift + alt - return : osascript -e 'tell application "iTerm2" to create window with default profile'
 
 # Open new Finder window
 alt - f : osascript -e 'tell app "Finder" to make new Finder window'
@@ -93,7 +93,7 @@ alt - f : osascript -e 'tell app "Finder" to make new Finder window'
 alt - b : osascript -e 'tell application "System Events"' -e 'tell process "Firefox" to click menu item "New Window" of menu "File" of menu bar 1' -e 'end tell'
 
 # Relaunch Amethyst
-shift + alt - z : osascript -e 'quit app "Amethyst"' && osascript -e 'open app "Amethyst"'
+shift + alt - x : osascript -e 'quit app "Amethyst"' && osascript -e 'open app "Amethyst"'
 
 # Disable Hide (Cmd + H)
 cmd - h :
