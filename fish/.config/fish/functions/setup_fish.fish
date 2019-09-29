@@ -15,7 +15,6 @@ function setup_fish --description 'Sets up universal variables and preferences'
     set new_user_paths \
         $HOME/.local/bin \
         $HOME/.cargo/bin \
-        $HOME/.yarn/bin \
         $HOME/go/bin \
         /usr/local/sbin \
         /usr/local/bin
