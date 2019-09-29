@@ -106,10 +106,10 @@ function setup_fish_colors
     set -U fish_color_search_match "--background=$color_comment" # the color used to highlight history search matches
     set -U fish_color_operator $color_orange # the color for parameter expansion operators like '*' and '~'
     set -U fish_color_escape $color_yellow # the color used to highlight character escapes like '\n' and '\x70'
-    set -U fish_color_cwd $color_green # the color used for the current working directory in the default prompt
+    set -U fish_color_cwd $color_blue # the color used for the current working directory in the default prompt
     set -U fish_color_cwd_root $color_red
     set -U fish_color_autosuggestion $color_comment # the color used for autosuggestions
-    set -U fish_color_user $color_blue # the color used to print the current username in some of fish default prompts
+    set -U fish_color_user $color_green # the color used to print the current username in some of fish default prompts
     set -U fish_color_host $color_cyan # the color used to print the current host system in some of fish default prompts
     set -U fish_color_cancel $color_comment # the color for the '^C' indicator on a canceled command
     set -U fish_pager_color_prefix $color_cyan # the color of the prefix string, i.e. the string that is to be completed
