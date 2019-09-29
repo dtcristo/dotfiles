@@ -76,5 +76,6 @@ function setup_fish --description 'Sets up universal variables and preferences'
     abbr -a oc 'overmind connect'
     abbr -a tf 'terraform'
     abbr -a kc 'kubectl'
-    abbr -a serve 'ruby -run -ehttpd .'
+    abbr -a serve 'ruby -run -ehttpd . -p 8888'
+    abbr -a owc 'owc-dev-server -p 8888'
 end
