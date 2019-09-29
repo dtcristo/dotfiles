@@ -9,7 +9,7 @@
 
 # asdf, version switcher
 if test -f /usr/local/opt/asdf/asdf.fish
-  source /usr/local/opt/asdf/asdf.fish
+    source /usr/local/opt/asdf/asdf.fish
 end
 
 # Interactive shell
