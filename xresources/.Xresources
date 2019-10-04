@@ -1,9 +1,5 @@
 Xcursor.theme: Paper
 
-URxvt.font: xft:Iosevka:size=16
-URxvt.boldFont:
-URxvt.scrollBar: false
-
 rofi.theme: base16-material-alt
 
 #include ".Xresources.d/base16-material-alt-256.Xresources"
