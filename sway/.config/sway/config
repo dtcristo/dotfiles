@@ -240,22 +240,54 @@ input "2:7:SynPS/2_Synaptics_TouchPad" {
     bindsym $mod+Ctrl+Down resize grow height 50px
     bindsym $mod+Ctrl+Up resize shrink height 50px
     bindsym $mod+Ctrl+Right resize grow width 50px
+
+# material-alt
+set $base00 #263238
+set $base01 #303C41
+set $base02 #37474F
+set $base03 #546E7A
+set $base04 #B2CCD6
+set $base05 #EEFFFF
+set $base06 #FAFAFA
+set $base07 #FFFFFF
+set $base08 #FF5370
+set $base09 #F78C6C
+set $base0A #FFCB6B
+set $base0B #C3E88D
+set $base0C #89DDFF
+set $base0D #82AAFF
+set $base0E #C792EA
+set $base0F #C17E70
+
 #
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    position bottom
+    position top
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
     status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
 
     colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
+        background $base00
+        separator  $base03
+        statusline $base05
+
+        #                   Border  BG      Text
+        focused_workspace   $base0C $base0C $base00
+        active_workspace    $base03 $base03 $base05
+        inactive_workspace  $base01 $base01 $base05
+        urgent_workspace    $base08 $base08 $base00
+        binding_mode        $base0A $base0A $base00
     }
 }
+
+#                       Border  BG      Text    Indicator Child Border
+client.focused          $base03 $base03 $base05 $base03   $base03
+client.focused_inactive $base01 $base01 $base05 $base01   $base01
+client.unfocused        $base01 $base01 $base05 $base01   $base01
+client.urgent           $base08 $base08 $base00 $base08   $base08
 
 include /etc/sway/config.d/*
