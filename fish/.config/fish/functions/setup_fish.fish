@@ -40,6 +40,16 @@ function setup_fish --description 'Sets up universal variables and preferences'
     # Paths in which pkg-config will search for its .pc files
     # set -Ux PKG_CONFIG_PATH $HOME/.local/lib/pkgconfig /usr/local/lib/pkgconfig /usr/lib/pkgconfig
 
+    # Linux environment variables
+    if test (uname) != "Darwin"
+        set -Ux XDG_SESSION_TYPE wayland
+        set -Ux MOZ_ENABLE_WAYLAND 1
+        set -Ux SDL_VIDEODRIVER wayland
+        set -Ux QT_QPA_PLATFORM wayland-egl
+        set -Ux QT_WAYLAND_FORCE_DPI physical
+        set -Ux QT_WAYLAND_DISABLE_WINDOWDECORATION 1
+    end
+
     # Clear fish greeting
     #--------------------
     echo '...clearing greeting'
@@ -59,7 +69,7 @@ function setup_fish --description 'Sets up universal variables and preferences'
     set -U fish_cursor_visual block
     set -U fish_cursor_replace_one underscore
     set -U fish_cursor_unknown block
-    # Shorten esxape delay to minimum
+    # Shorten escape delay to minimum
     set -U fish_escape_delay_ms 10
     # Hybrid vi mode, retains emacs bindings
     set -U fish_key_bindings fish_hybrid_key_bindings

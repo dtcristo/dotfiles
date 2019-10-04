@@ -1,15 +1,9 @@
-# chruby, ruby version switcher
-# set -gx CHRUBY_ROOT /usr
-# if test -f /usr/local/share/chruby/chruby.fish
-#   source /usr/local/share/chruby/chruby.fish
-# end
-# if test -f /usr/local/share/chruby/auto.fish
-#   source /usr/local/share/chruby/auto.fish
-# end
-
 # asdf, version switcher
 if test -f /usr/local/opt/asdf/asdf.fish
     source /usr/local/opt/asdf/asdf.fish
+end
+if test -f /opt/asdf-vm/asdf.fish
+    source /opt/asdf-vm/asdf.fish
 end
 
 # Interactive shell
