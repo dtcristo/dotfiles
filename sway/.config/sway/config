@@ -14,35 +14,48 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term urxvt
+set $term alacritty
 # Your preferred application launcher
-# Note: it's recommended that you pass the final command to sway
-set $menu dmenu_path | dmenu | xargs swaymsg exec --
+set $menu rofi -show drun
+#Your preferred web browser
+set $browser firefox
+#Your preferred file manager
+set $files thunar
+
+#xwayland disable
+
+# Run commands on start
+exec {
+    dex --autostart
+    thunar --daemon
+    # swayidle -w \
+    #     timeout 20 'swaymsg "output * dpms off"' \
+    #     timeout 60 'systemctl suspend' \
+    #     resume 'swaymsg "output * dpms on"' \
+    #     before-sleep 'swaylock -f -e -i /usr/share/backgrounds/adapta/poly.jpg'
+}
+
+exec_always {
+    gsettings set org.gnome.desktop.interface gtk-theme "Adapta"
+    gsettings set org.gnome.desktop.interface icon-theme "Paper"
+    gsettings set org.gnome.desktop.interface cursor-theme "Paper"
+    gsettings set org.gnome.desktop.interface font-name "Noto Sans 12"
+}
+
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg /usr/share/backgrounds/adapta/poly.jpg fill
+
+# Scale factor = 1656.25 X 900
+output eDP-1 scale 1.6
 #
 # Example configuration:
 #
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
-
-### Idle configuration
-#
-# Example configuration:
-#
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * dpms off"' \
-#               resume 'swaymsg "output * dpms on"' \
-#          before-sleep 'swaylock -f -c 000000'
-#
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
 
 ### Input configuration
 #
@@ -57,6 +70,10 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
+input "2:7:SynPS/2_Synaptics_TouchPad" {
+    tap enabled
+    natural_scroll enabled
+}
 
 ### Key bindings
 #
@@ -66,10 +83,16 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     bindsym $mod+Return exec $term
 
     # Kill focused window
-    bindsym $mod+Shift+q kill
+    bindsym $mod+q kill
 
     # Start your launcher
     bindsym $mod+d exec $menu
+
+    # Start your web browser
+    bindsym $mod+r exec $browser
+
+    # Start your file manager
+    bindsym $mod+t exec $files
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -81,8 +104,42 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     # Reload the configuration file
     bindsym $mod+Shift+c reload
 
+    # Function key bindings
+    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+    bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+    bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+    bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
+    bindsym XF86MonBrightnessUp exec brightnessctl set +10%
+    bindsym XF86AudioPlay exec playerctl play-pause
+    bindsym XF86AudioNext exec playerctl next
+    bindsym XF86AudioPrev exec playerctl previous
+
+    # Setup swaynag bar
+    set $nag         exec swaynagmode
+    set $nag_exit    $nag --exit
+    set $nag_confirm $nag --confirm
+    set $nag_select  $nag --select
+
+    mode "nag" {
+        bindsym {
+            Ctrl+d    mode "default"
+            Ctrl+c    $nag_exit
+            q         $nag_exit
+            Escape    $nag_exit
+            Return    $nag_confirm
+            Tab       $nag_select prev
+            Shift+Tab $nag_select next
+            Left      $nag_select next
+            Right     $nag_select prev
+            Up        $nag_select next
+            Down      $nag_select prev
+        }
+    }
+    swaynag_command $nag -R
+
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+    bindsym $mod+Shift+q $nag -t "warning" -m "Exit Sway?" -b "Exit" "swaymsg exit" -b "Reload" "swaymsg reload"
 #
 # Moving around:
 #
@@ -144,7 +201,7 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
+    # bindsym $mod+s layout stacking
     bindsym $mod+w layout tabbed
     bindsym $mod+e layout toggle split
 
@@ -174,34 +231,21 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # Resizing containers:
 #
-mode "resize" {
-    # left will shrink the containers width
-    # right will grow the containers width
-    # up will shrink the containers height
-    # down will grow the containers height
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
+    bindsym $mod+Ctrl+$left resize shrink width 50px
+    bindsym $mod+Ctrl+$down resize grow height 50px
+    bindsym $mod+Ctrl+$up resize shrink height 50px
+    bindsym $mod+Ctrl+$right resize grow width 50px
 
-    # Ditto, with arrow keys
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
-
-    # Return to default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+r mode "resize"
-
+    bindsym $mod+Ctrl+Left resize shrink width 50px
+    bindsym $mod+Ctrl+Down resize grow height 50px
+    bindsym $mod+Ctrl+Up resize shrink height 50px
+    bindsym $mod+Ctrl+Right resize grow width 50px
 #
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    position top
+    position bottom
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
