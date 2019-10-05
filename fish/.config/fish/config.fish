@@ -15,7 +15,7 @@ if status --is-interactive
     end
 
     # Source .dir_colors on macOS and use coreutils `ls`
-    if test (uname) = "Darwin"
+    if test (uname) = 'Darwin'
         eval (gdircolors --c-shell $HOME/dotfiles/shell/.dir_colors)
         alias ls='gls --color'
     end
@@ -24,7 +24,7 @@ if status --is-interactive
     #------------------------
     if status --is-login
         # Clear screen and print system info on login (non macOS)
-        if test (uname) != "Darwin"
+        if test (uname) != 'Darwin'
             clear; echo; neofetch
         end
     end

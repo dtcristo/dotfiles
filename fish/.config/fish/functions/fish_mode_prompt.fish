@@ -1,5 +1,5 @@
 # The fish_mode_prompt function is prepended to the prompt
-function fish_mode_prompt --description "Displays the current mode"
+function fish_mode_prompt --description 'Displays the current mode'
     # Do nothing if not in vi mode
     if using_vi_key_bindings
         switch $fish_bind_mode

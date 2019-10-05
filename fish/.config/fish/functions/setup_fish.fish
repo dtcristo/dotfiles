@@ -41,7 +41,7 @@ function setup_fish --description 'Sets up universal variables and preferences'
     # set -Ux PKG_CONFIG_PATH $HOME/.local/lib/pkgconfig /usr/local/lib/pkgconfig /usr/lib/pkgconfig
 
     # Linux environment variables
-    if test (uname) != "Darwin"
+    if test (uname) != 'Darwin'
         set -Ux XDG_SESSION_TYPE wayland
         set -Ux MOZ_ENABLE_WAYLAND 1
         set -Ux SDL_VIDEODRIVER wayland

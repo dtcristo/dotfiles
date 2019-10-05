@@ -33,31 +33,31 @@ function setup_fish_colors
     # Base16 colors
     #--------------
     # Background tones
-    set -U color_base00 "black"
-    # set -U color_base01 "222E38"
-    set -U color_base01 "303C41"
+    set -U color_base00 'black'
+    # set -U color_base01 '222E38'
+    set -U color_base01 '303C41'
     # Content tones
-    # set -U color_base02 "586875"
-    set -U color_base02 "37474F"
-    set -U color_base03 "brblack"
-    # set -U color_base04 "85939E"
-    set -U color_base04 "B2CCD6"
-    set -U color_base05 "white"
+    # set -U color_base02 '586875'
+    set -U color_base02 '37474F'
+    set -U color_base03 'brblack'
+    # set -U color_base04 '85939E'
+    set -U color_base04 'B2CCD6'
+    set -U color_base05 'white'
     # Background tones
-    # set -U color_base06 "E8E9ED"
-    set -U color_base06 "FAFAFA"
-    set -U color_base07 "brwhite"
+    # set -U color_base06 'E8E9ED'
+    set -U color_base06 'FAFAFA'
+    set -U color_base07 'brwhite'
     # Accent colors
-    set -U color_base08 "red"
-    # set -U color_base09 "E66B2B"
-    set -U color_base09 "F78C6C"
-    set -U color_base0A "yellow"
-    set -U color_base0B "green"
-    set -U color_base0C "cyan"
-    set -U color_base0D "blue"
-    set -U color_base0E "magenta"
-    # set -U color_base0F "D73C9A"
-    set -U color_base0F "C17E70"
+    set -U color_base08 'red'
+    # set -U color_base09 'E66B2B'
+    set -U color_base09 'F78C6C'
+    set -U color_base0A 'yellow'
+    set -U color_base0B 'green'
+    set -U color_base0C 'cyan'
+    set -U color_base0D 'blue'
+    set -U color_base0E 'magenta'
+    # set -U color_base0F 'D73C9A'
+    set -U color_base0F 'C17E70'
     # Color aliases
     set -U color_background $color_base00
     set -U color_comment    $color_base03
