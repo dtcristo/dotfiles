@@ -14,11 +14,6 @@ if status --is-interactive
         eval sh $HOME/.config/base16/base16-material-alt.sh
     end
 
-    # Start sway if on tty1
-    if test -z "$DISPLAY" and test (tty) = '/dev/tty1'
-        exec sway
-    end
-
     # Source .dir_colors on macOS and use coreutils `ls`
     if test (uname) = 'Darwin'
         eval (gdircolors --c-shell $HOME/dotfiles/shell/.dir_colors)
@@ -28,6 +23,11 @@ if status --is-interactive
     # Interactive login shell
     #------------------------
     if status --is-login
+        # Start sway if on tty1
+        if test -z "$DISPLAY" and test (tty) = '/dev/tty1'
+            exec sway
+        end
+
         # Clear screen and print system info on login (non macOS)
         if test (uname) != 'Darwin'
             clear; echo; neofetch
