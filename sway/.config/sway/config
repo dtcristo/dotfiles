@@ -1,28 +1,19 @@
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
-# Read `man 5 sway` for a complete reference.
-
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
+
 # Home row direction keys, like vim
 set $left h
 set $down j
 set $up k
 set $right l
-# Your preferred terminal emulator
-set $term alacritty
-# Your preferred application launcher
-set $menu rofi -show drun
-#Your preferred web browser
-set $browser firefox
-#Your preferred file manager
-set $files thunar
 
-#xwayland disable
+# Default applications
+set $term alacritty
+set $menu wofi --show drun
+set $browser firefox
+set $files thunar
 
 # Run commands on start
 exec {
@@ -36,38 +27,37 @@ exec {
 }
 
 exec_always {
-    gsettings set org.gnome.desktop.interface gtk-theme "Adapta"
-    gsettings set org.gnome.desktop.interface icon-theme "Paper"
-    gsettings set org.gnome.desktop.interface cursor-theme "Paper"
-    gsettings set org.gnome.desktop.interface font-name "Noto Sans 12"
+    gsettings set org.gnome.desktop.interface gtk-theme 'Adapta'
+    gsettings set org.gnome.desktop.interface icon-theme 'Paper'
+    gsettings set org.gnome.desktop.interface cursor-theme 'ComixCursors-White'
+    gsettings set org.gnome.desktop.interface font-name 'Roboto 12'
 }
 
 font 'Iosevka 12'
 
 ### Output configuration
 #
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+# You can get the names of your outputs by running: swaymsg -t get_outputs
 output * bg /usr/share/backgrounds/adapta/poly.jpg fill
 
-# Scale factor = 1656.25 X 900
-output eDP-1 scale 1.6
-#
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
+set $monitor DP-2
+set $laptop eDP-1
+
+output $monitor {
+    pos 0 0
+    res 2560 1440
+}
+output $laptop {
+    # Scale factor 1.6 = 1656.25 X 900
+    scale 1.6
+    pos 2560 540
+    res 2560 1440
+}
+
+bindswitch lid:on output $laptop disable
+bindswitch lid:off output $laptop enable
 
 ### Input configuration
-#
-# Example configuration:
-#
-#   input "2:14:SynPS/2_Synaptics_TouchPad" {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
@@ -80,19 +70,13 @@ input "2:7:SynPS/2_Synaptics_TouchPad" {
 #
 # Basics:
 #
-    # Start a terminal
-    bindsym $mod+Return exec $term
-
     # Kill focused window
     bindsym $mod+q kill
 
-    # Start your launcher
+    # Start applications
+    bindsym $mod+Return exec $term
     bindsym $mod+d exec $menu
-
-    # Start your web browser
     bindsym $mod+r exec $browser
-
-    # Start your file manager
     bindsym $mod+t exec $files
 
     # Drag floating windows by holding down $mod and left mouse button.
@@ -122,9 +106,9 @@ input "2:7:SynPS/2_Synaptics_TouchPad" {
     set $nag_confirm $nag --confirm
     set $nag_select  $nag --select
 
-    mode "nag" {
+    mode 'nag' {
         bindsym {
-            Ctrl+d    mode "default"
+            Ctrl+d    mode 'default'
             Ctrl+c    $nag_exit
             q         $nag_exit
             Escape    $nag_exit
@@ -140,7 +124,7 @@ input "2:7:SynPS/2_Synaptics_TouchPad" {
     swaynag_command $nag -R
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+q $nag -t "warning" -m "Exit Sway?" -b "Exit" "swaymsg exit" -b "Reload" "swaymsg reload"
+    bindsym $mod+Shift+q $nag -t 'warning' -m 'Exit Sway?' -b 'Exit' 'swaymsg exit' -b 'Reload' 'swaymsg reload'
 #
 # Moving around:
 #
@@ -265,7 +249,7 @@ set $base0F #C17E70
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    position top
+    position bottom
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
