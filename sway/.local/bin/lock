@@ -1,0 +1,14 @@
+#!/usr/bin/env fish
+
+set displays eDP-1 DP-1 DP-2
+set swaylock_args $argv
+
+for display in $displays
+    set image "/tmp/screen_$display.png"
+    if grim -o $display $image 2> /dev/null
+        set swaylock_args $swayshelock_args -i "$display:$image"
+        convert $image -scale 10% -scale 1000% $image
+    end
+end
+
+swaylock --ignore-empty-password $swaylock_args
