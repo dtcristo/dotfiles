@@ -24,13 +24,8 @@ if status --is-interactive
     #------------------------
     if status --is-login
         # Start sway if on tty1
-        if test -z "$DISPLAY" and test (tty) = '/dev/tty1'
+        if test (uname) != 'Darwin' && test -z "$DISPLAY" && test (tty) = '/dev/tty1'
             exec sway
-        end
-
-        # Clear screen and print system info on login (non macOS)
-        if test (uname) != 'Darwin'
-            clear; echo; neofetch
         end
     end
 end
