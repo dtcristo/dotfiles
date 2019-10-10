@@ -47,7 +47,7 @@ exec_always {
     # GTK theme settings
     gsettings set org.gnome.desktop.interface gtk-theme 'Adapta'
     gsettings set org.gnome.desktop.interface icon-theme 'Paper'
-    gsettings set org.gnome.desktop.interface cursor-theme 'ComixCursors-White'
+    gsettings set org.gnome.desktop.interface cursor-theme 'Paper'
     gsettings set org.gnome.desktop.interface font-name 'Roboto 12'
 
     # Check lid state on launch
