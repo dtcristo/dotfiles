@@ -13,8 +13,3 @@ General stow, from within `~/dotfiles`
 ```sh
 $ stow -v fish
 ```
-
-Stowing system config into `/etc`
-```sh
-$ sudo stow -v --target=/etc etc
-```
