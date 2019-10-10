@@ -1,0 +1,6 @@
+#!/usr/bin/env fish
+
+if test -f /tmp/lid-closed
+    sleep 1
+    swaymsg 'output eDP-1 disable'
+end

@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+require 'json'
+
+outputs = JSON.parse(`swaymsg -t get_outputs`)
+
+if outputs.length > 1
+  system('touch /tmp/lid-closed')
+  system('swaymsg "output eDP-1 disable"')
+end
