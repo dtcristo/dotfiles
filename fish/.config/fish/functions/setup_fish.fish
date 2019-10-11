@@ -50,6 +50,11 @@ function setup_fish --description 'Sets up universal variables and preferences'
         set -Ux QT_WAYLAND_DISABLE_WINDOWDECORATION 1
     end
 
+    # fzf colors
+    if test -f $HOME/.config/base16/output/fzf/fish/base16-material-alt.fish
+        source $HOME/.config/base16/output/fzf/fish/base16-material-alt.fish
+    end
+
     # Clear fish greeting
     #--------------------
     echo '...clearing greeting'
