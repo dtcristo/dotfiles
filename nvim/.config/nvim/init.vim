@@ -11,9 +11,6 @@ Plug 'scrooloose/nerdcommenter'
 " ripgrep plugin
 Plug 'jremmen/vim-ripgrep'
 
-" Color schemes
-Plug 'chriskempson/base16-vim'
-
 " File navigation
 Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -76,9 +73,9 @@ set wildignore+=*/.git/*,*/tmp/*,*.swp,*/node_modules/*
 " Highlight results in ripgrep
 let g:rg_highlight = 'true'
 
-" Color schemes
+" Color scheme
 let g:base16colorspace=256 " Access colors present in 256 colorspace
-colorscheme base16-material
+colorscheme base16-material-alt
 
 " Misc settings
 filetype plugin indent on
