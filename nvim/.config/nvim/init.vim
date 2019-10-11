@@ -32,7 +32,6 @@ Plug 'airblade/vim-gitgutter'
 
 " Status bar
 Plug 'itchyny/lightline.vim'
-Plug 'mike-hearn/base16-vim-lightline'
 
 " Disable motion anti-patterns
 Plug 'takac/vim-hardtime'
@@ -90,7 +89,7 @@ set synmaxcol=300   " Kill syntax highlighting after column 300
 
 " Status bar
 set noshowmode  " remove duplicate mode indicator
-let g:lightline = { 'colorscheme': 'base16_material' }
+let g:lightline = { 'colorscheme': 'base16_material_alt' }
 
 " Hard mode enabled
 let g:hardtime_default_on = 0

@@ -38,4 +38,4 @@ let s:p.tabline.middle  = [ [ s:base05, s:base01 ] ]
 let s:p.tabline.right   = [ [ s:base05, s:base02 ] ]
 let s:p.tabline.tabsel  = [ [ s:base02, s:base0A ] ]
 
-let g:lightline#colorscheme#base16_#palette = lightline#colorscheme#flatten(s:p)
+let g:lightline#colorscheme#base16_material_alt#palette = lightline#colorscheme#flatten(s:p)
