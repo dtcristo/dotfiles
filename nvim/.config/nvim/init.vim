@@ -1,27 +1,43 @@
 call plug#begin('~/.local/share/nvim/plugged')
+" Sensible defaults
+Plug 'tpope/vim-sensible'
+
+" Disable motion anti-patterns
+Plug 'takac/vim-hardtime'
+
+" Easy commenting
+Plug 'tpope/vim-commentary'
+
+" Easy editing around things
+Plug 'tpope/vim-surround'
+
+" Plugin support for repeating
+Plug 'tpope/vim-repeat'
+
+" Handy mappings on brackets
+Plug 'tpope/vim-unimpaired'
+
 " Insert or delete brackets, parens, quotes in pair
 Plug 'jiangmiao/auto-pairs'
 
 " Add 'end' to ruby 'def'
 Plug 'tpope/vim-endwise'
 
-" Easy commenting
-Plug 'scrooloose/nerdcommenter'
-
 " ripgrep plugin
-Plug 'jremmen/vim-ripgrep'
+" Plug 'jremmen/vim-ripgrep'
 
 " File navigation
 Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
 
 " Language support
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
 Plug 'pangloss/vim-javascript'
-Plug 'elixir-editors/vim-elixir'
 Plug 'rust-lang/rust.vim'
+Plug 'elixir-editors/vim-elixir'
 Plug 'leafgarland/typescript-vim'
 Plug 'ElmCast/elm-vim'
-Plug 'tpope/vim-rails'
 Plug 'dag/vim-fish'
 Plug 'rhysd/vim-crystal'
 
@@ -36,9 +52,6 @@ Plug '~/.config/base16/output/vim'
 Plug 'itchyny/lightline.vim'
 Plug '~/.config/base16/output/lightline'
 
-" Disable motion anti-patterns
-Plug 'takac/vim-hardtime'
-
 " Multiple cursors
 "Plug 'terryma/vim-multiple-cursors'
 
@@ -51,44 +64,74 @@ Plug 'takac/vim-hardtime'
 " Run ruby tests
 "Plug 'skalnik/vim-vroom'
 
-" Easy editing around things
-Plug 'tpope/vim-surround'
-
-" Plugin support for repeating
-Plug 'tpope/vim-repeat'
-
-" Handy mappings on brackets
-Plug 'tpope/vim-unimpaired'
-
 " Initialize plugin system
 call plug#end()
 
-" CtrlP with ripgrep
-" https://elliotekj.com/2016/11/22/setup-ctrlp-to-use-ripgrep-in-vim/
-if executable('rg')
-  "set grepprg=rg\ --color=never
-  let g:ctrlp_user_command = 'rg %s --files --hidden --color=never --glob "!.git"'
-  let g:ctrlp_use_caching = 0
-endif
-"set wildignore+=*/.git/*,*/tmp/*,*.swp,*/node_modules/*
+" Misc settings
+" filetype plugin indent on
+set number relativenumber " Show line numbers
+set list            " Show invisible characters
+" set tabstop=8       " Width of a tab character
+" set shiftwidth=2    " Width of an indent
+set expandtab       " Expand tabs to spaces
+" set scrolloff=10    " Never let cursor hit bottom
+set cursorline      " Highlight current line
+" set synmaxcol=300   " Kill syntax highlighting after column 300
 
-" Highlight results in ripgrep
-"let g:rg_highlight = 'true'
+" Key bindings
+nnoremap <silent> <M-a> :NERDTreeToggle<Return>
+nnoremap <silent> <M-f> :NERDTreeFind<Return>
+" Split navigation
+nnoremap <M-w> <C-w><C-w>
+nnoremap <M-h> <C-w><C-h>
+nnoremap <M-j> <C-w><C-j>
+nnoremap <M-k> <C-w><C-k>
+nnoremap <M-l> <C-w><C-l>
+nnoremap <silent> <M-C-h> :vertical resize -5<Return>
+nnoremap <silent> <M-C-j> :resize +5<Return>
+nnoremap <silent> <M-C-k> :resize -5<Return>
+nnoremap <silent> <M-C-l> :vertical resize +5<Return>
+" Tab navigation and movement
+nnoremap <M-Tab> gt
+nnoremap <M-S-Tab> gT
+nnoremap <M-1> 1gt
+nnoremap <M-2> 2gt
+nnoremap <M-3> 3gt
+nnoremap <M-4> 4gt
+nnoremap <M-5> 5gt
+nnoremap <M-6> 6gt
+nnoremap <M-7> 7gt
+nnoremap <M-8> 8gt
+nnoremap <M-9> 9gt
+nnoremap <silent> <M-H> :tabmove -1<Return>
+nnoremap <silent> <M-L> :tabmove +1<Return>
+nnoremap <silent> <M-!> :tabmove 0<Return>
+nnoremap <silent> <M-@> :tabmove 1<Return>
+nnoremap <silent> <M-#> :tabmove 2<Return>
+nnoremap <silent> <M-$> :tabmove 3<Return>
+nnoremap <silent> <M-%> :tabmove 4<Return>
+nnoremap <silent> <M-^> :tabmove 5<Return>
+nnoremap <silent> <M-&> :tabmove 6<Return>
+nnoremap <silent> <M-*> :tabmove 7<Return>
+nnoremap <silent> <M-(> :tabmove 8<Return>
+" Ctrl-q for quit
+nnoremap <silent> <C-q> :quit<Return>
+inoremap <silent> <C-q> <Esc>:quit<Return>
+" Ctrl-s for save
+nnoremap <silent> <C-s> :write<Return>
+inoremap <silent> <C-s> <Esc>:write<Return>
+" Ctrl-\ for toggle word wrap
+nnoremap <silent> <C-\> :set wrap!<Return>
+
+" Make navigation with HJKL harder
+let g:hardtime_default_on = 1
+let g:hardtime_ignore_quickfix = 1
+let g:hardtime_allow_different_key = 1
+let g:hardtime_maxcount = 2
 
 " Color scheme
 let g:base16colorspace=256 " Access colors present in 256 colorspace
 colorscheme base16-material-alt
-
-" Misc settings
-filetype plugin indent on
-set number relativenumber " Show line numbers
-set list            " Show invisible characters
-set tabstop=8       " Width of a tab character
-set shiftwidth=2    " Width of an indent
-set expandtab       " Expand tabs to spaces
-"set scrolloff=10    " Never let cursor hit bottom
-set cursorline      " Highlight current line
-set synmaxcol=300   " Kill syntax highlighting after column 300
 
 " Status bar
 set noshowmode " Remove duplicate mode indicator
@@ -105,46 +148,22 @@ let g:lightline = {
   \   }
   \ }
 
-" Hard mode
-let g:hardtime_default_on = 0
+" CtrlP with ripgrep
+" https://elliotekj.com/2016/11/22/setup-ctrlp-to-use-ripgrep-in-vim/
+if executable('rg')
+  "set grepprg=rg\ --color=never
+  let g:ctrlp_user_command = 'rg %s --files --hidden --color=never --glob "!.git"'
+  let g:ctrlp_use_caching = 0
+endif
+"set wildignore+=*/.git/*,*/tmp/*,*.swp,*/node_modules/*
+
+" Highlight results in ripgrep
+"let g:rg_highlight = 'true'
 
 " NERDTree
 let g:NERDTreeShowLineNumbers=1
 let g:NERDTreeWinSize=35
 let g:NERDTreeShowHidden=1
-
-" Key bindings
-let g:mapleader = "\<Space>" " Use space for leader key
-nnoremap <silent> <leader>t :NERDTreeToggle<CR>
-nnoremap <silent> <leader>f :NERDTreeFind<CR>
-" Tab navigation and movement
-nnoremap <M-Tab> gt
-nnoremap <M-S-Tab> gT
-nnoremap <M-1> 1gt
-nnoremap <M-2> 2gt
-nnoremap <M-3> 3gt
-nnoremap <M-4> 4gt
-nnoremap <M-5> 5gt
-nnoremap <M-6> 6gt
-nnoremap <M-7> 7gt
-nnoremap <M-8> 8gt
-nnoremap <M-9> 9gt
-nnoremap <silent> <M-H> :tabmove -1<return>
-nnoremap <silent> <M-L> :tabmove +1<return>
-nnoremap <silent> <M-!> :tabmove 0<return>
-nnoremap <silent> <M-@> :tabmove 1<return>
-nnoremap <silent> <M-#> :tabmove 2<return>
-nnoremap <silent> <M-$> :tabmove 3<return>
-nnoremap <silent> <M-%> :tabmove 4<return>
-nnoremap <silent> <M-^> :tabmove 5<return>
-nnoremap <silent> <M-&> :tabmove 6<return>
-nnoremap <silent> <M-*> :tabmove 7<return>
-nnoremap <silent> <M-(> :tabmove 8<return>
-" Ctrl-s for save
-nnoremap <silent> <C-s> :update<return>
-inoremap <silent> <C-s> <esc>:update<return>
-" Ctrl-\ for toggle word wrap
-nnoremap <silent> <C-\> :set wrap!<return>
 
 " Run rustfmt on save
 "let g:rustfmt_autosave = 1
