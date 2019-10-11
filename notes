@@ -1,0 +1,74 @@
+neovim setup
+screen sleep
+hotkeys for spotify
+hjkl arrows
+xcape escape - shift
+present 1080p script - with hotkey
+waybar
+swaylock theme
+pdf viewer - https://wiki.archlinux.org/index.php/PDF,_PS_and_DjVu
+hibernate (resume)
+wofi theme
+cursor theme - scaling
+electron scaling
+
+axel - cli download accelorator
+redshift
+hydroxide - protonmail bridge
+kanshi - dynamic display configuration
+wf-recorder - screen recording (wf-recorder -g "$(slurp)")
+
+Add to document
+----------------------------------------
+
+ttf-joypixels
+noto-fonts
+ttf-roboto
+ttf-iosevka
+
+playerctl
+brightnessctl
+netctl
+systemctl
+
+throttled - cpu throttling (https://github.com/erpalma/throttled)
+s-tui - stress tester
+mako
+dex
+asdf-vm
+neovim
+ripgrep
+grim slurp
+qalculate-gtk
+imv
+wl-clipboard
+sway swaylock swayidle waybar
+thunar gvfs thunar-volman
+pulseaudio pavucontrol
+
+XF86WakeUp - Fn
+Print - PrtSc
+XF86Display
+XF86WLAN
+XF86Favorites
+XF86Tools
+XF86Bluetooth
+
+echo "Installing and configuring UFW"
+yes | sudo pacman -S ufw
+sudo systemctl enable ufw
+sudo systemctl start ufw
+sudo ufw enable
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+
+https://wiki.archlinux.org/index.php/Lenovo_ThinkPad_X1_Carbon_(Gen_6)
+https://github.com/exah-io/minimal-arch-linux
+https://github.com/ejmg/an-idiots-guide-to-installing-arch-on-a-lenovo-carbon-x1-gen-6
+
+notes on s3 suspend support
+
+font presets
+sudo ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d
+sudo ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d
+sudo ln -s /etc/fonts/conf.avail/11-lcdfilter-default.conf /etc/fonts/conf.d
