@@ -1,0 +1,6 @@
+#!/usr/bin/env fish
+
+cd $HOME/.config/base16/
+rm -rf output/ schemes/ templates/
+pybase16 update --custom --verbose
+pybase16 build --verbose
