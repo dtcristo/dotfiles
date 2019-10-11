@@ -24,29 +24,32 @@ Plug 'ElmCast/elm-vim'
 Plug 'tpope/vim-rails'
 Plug 'dag/vim-fish'
 Plug 'rhysd/vim-crystal'
-Plug 'kovetskiy/sxhkd-vim'
 
 " Git support
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
+" Color schemes
+Plug '~/.config/base16/output/vim'
+
 " Status bar
 Plug 'itchyny/lightline.vim'
+Plug '~/.config/base16/output/lightline'
 
 " Disable motion anti-patterns
 Plug 'takac/vim-hardtime'
 
 " Multiple cursors
-Plug 'terryma/vim-multiple-cursors'
+"Plug 'terryma/vim-multiple-cursors'
 
 " Syntax checking
-Plug 'vim-syntastic/syntastic'
+"Plug 'vim-syntastic/syntastic'
 
 " File type icons
 "Plug 'ryanoasis/vim-devicons'
 
 " Run ruby tests
-Plug 'skalnik/vim-vroom'
+"Plug 'skalnik/vim-vroom'
 
 " Easy editing around things
 Plug 'tpope/vim-surround'
@@ -63,14 +66,14 @@ call plug#end()
 " CtrlP with ripgrep
 " https://elliotekj.com/2016/11/22/setup-ctrlp-to-use-ripgrep-in-vim/
 if executable('rg')
-  set grepprg=rg\ --color=never
-  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+  "set grepprg=rg\ --color=never
+  let g:ctrlp_user_command = 'rg %s --files --hidden --color=never --glob "!.git"'
   let g:ctrlp_use_caching = 0
 endif
-set wildignore+=*/.git/*,*/tmp/*,*.swp,*/node_modules/*
+"set wildignore+=*/.git/*,*/tmp/*,*.swp,*/node_modules/*
 
 " Highlight results in ripgrep
-let g:rg_highlight = 'true'
+"let g:rg_highlight = 'true'
 
 " Color scheme
 let g:base16colorspace=256 " Access colors present in 256 colorspace
@@ -78,20 +81,31 @@ colorscheme base16-material-alt
 
 " Misc settings
 filetype plugin indent on
-set number relativenumber  " Show line numbers
+set number relativenumber " Show line numbers
 set list            " Show invisible characters
 set tabstop=8       " Width of a tab character
 set shiftwidth=2    " Width of an indent
 set expandtab       " Expand tabs to spaces
-set scrolloff=10    " Never let cursor hit bottom
+"set scrolloff=10    " Never let cursor hit bottom
 set cursorline      " Highlight current line
 set synmaxcol=300   " Kill syntax highlighting after column 300
 
 " Status bar
-set noshowmode  " remove duplicate mode indicator
-let g:lightline = { 'colorscheme': 'base16_material_alt' }
+set noshowmode " Remove duplicate mode indicator
+let g:lightline = {
+  \   'colorscheme': 'base16_material_alt',
+  \   'active': {
+  \     'left': [
+  \       ['mode', 'paste'],
+  \       ['gitbranch', 'readonly', 'filename', 'modified']
+  \     ]
+  \   },
+  \   'component_function': {
+  \     'gitbranch': 'fugitive#head',
+  \   }
+  \ }
 
-" Hard mode enabled
+" Hard mode
 let g:hardtime_default_on = 0
 
 " NERDTree
@@ -133,21 +147,21 @@ inoremap <silent> <C-s> <esc>:update<return>
 nnoremap <silent> <C-\> :set wrap!<return>
 
 " Run rustfmt on save
-let g:rustfmt_autosave = 1
+"let g:rustfmt_autosave = 1
 
 " Syntastic configuration
-set statusline+=%#warningmsg#
-set statusline+=%{syntasticstatuslineflag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+"set statusline+=%#warningmsg#
+"set statusline+=%{syntasticstatuslineflag()}
+"set statusline+=%*
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
 
 " vim-vroom config
-let g:vroom_use_terminal = 1  " Enable Neovim terminal for tests
-let g:vroom_use_bundle_exec = 0
-let g:vroom_test_unit_command = 'm'
+"let g:vroom_use_terminal = 1  " Enable Neovim terminal for tests
+"let g:vroom_use_bundle_exec = 0
+"let g:vroom_test_unit_command = 'm'
 
 function! OnBufEnter()
   " Automatically enter insert mode in terminal buffers
@@ -175,6 +189,4 @@ augroup Misc
   " Auto toggle out of relative numbers for unfocused split
   autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
   autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
-  " File type config
-  autocmd FileType typescript setl sw=4 sts=4 et
 augroup END
