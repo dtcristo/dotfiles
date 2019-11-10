@@ -9,6 +9,15 @@ function setup_fish --description 'Sets up universal variables and preferences'
         fish -c fisher
     end
 
+    # Android dev environment on macOS
+    #---------------------------------
+    if test (uname) = 'Darwin'
+        set -Ux ANDROID_SDK_ROOT $HOME/Library/Android/sdk
+        set -Ux ANDROID_HOME $ANDROID_SDK_ROOT
+        set -Ux ANDROID_NDK_HOME /usr/local/share/android-ndk
+        set -Ux JAVA_HOME (/usr/libexec/java_home -v 1.8)
+    end
+
     # User paths
     #-----------
     echo '...setting user paths'
@@ -16,6 +25,11 @@ function setup_fish --description 'Sets up universal variables and preferences'
         $HOME/.local/bin \
         $HOME/.cargo/bin \
         $HOME/go/bin \
+        $ANDROID_HOME/emulator \
+        $ANDROID_HOME/tools \
+        $ANDROID_HOME/tools/bin \
+        $ANDROID_HOME/platform-tools \
+        $JAVA_HOME/bin \
         /usr/local/sbin \
         /usr/local/bin
     for x in $new_user_paths
