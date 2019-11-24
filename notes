@@ -11,6 +11,7 @@ hibernate (resume)
 wofi theme
 cursor theme - scaling
 electron scaling
+google drive
 
 axel - cli download accelorator
 redshift
@@ -29,6 +30,7 @@ ttf-iosevka
 playerctl
 brightnessctl
 netctl
+netctl-auto
 systemctl
 
 throttled - cpu throttling (https://github.com/erpalma/throttled)
