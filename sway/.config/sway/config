@@ -16,7 +16,7 @@ set $browser firefox
 set $files thunar
 
 default_border pixel 4
-hide_edge_borders smart
+# hide_edge_borders smart
 # smart_gaps on
 # gaps inner 20
 # gaps outer 20
@@ -27,7 +27,7 @@ exec {
     mako --default-timeout 10000 \
         --background-color '#263238' --text-color '#EEFFFF' --border-color '#546E7A' \
         --border-size 4 --font 'Iosevka 10'
-    
+
     # Execute DesktopEntry files
     dex --autostart
 
@@ -122,7 +122,7 @@ input '2:7:SynPS/2_Synaptics_TouchPad' {
     floating_modifier $mod normal
 
     # Reload the configuration file
-    bindsym $mod+Shift+c reload
+    bindsym $mod+Shift+x reload
 
     # Function key bindings
     bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
@@ -231,10 +231,10 @@ input '2:7:SynPS/2_Synaptics_TouchPad' {
     bindsym $mod+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle
+    bindsym $mod+Space floating toggle
 
     # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
+    bindsym $mod+Tab focus mode_toggle
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
