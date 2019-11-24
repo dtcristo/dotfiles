@@ -58,7 +58,8 @@ function setup_fish --description 'Sets up universal variables and preferences'
     if test (uname) != 'Darwin'
         set -Ux XDG_SESSION_TYPE wayland
         set -Ux MOZ_ENABLE_WAYLAND 1
-        set -Ux SDL_VIDEODRIVER wayland
+        # set -Ux SDL_VIDEODRIVER wayland
+        set -Ux SDL_VIDEODRIVER x11
         set -Ux QT_QPA_PLATFORM wayland-egl
         set -Ux QT_WAYLAND_FORCE_DPI physical
         set -Ux QT_WAYLAND_DISABLE_WINDOWDECORATION 1
