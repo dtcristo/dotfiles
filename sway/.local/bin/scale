@@ -14,7 +14,7 @@ end
 if focused_output
   output_name = focused_output['name']
   current_scale = focused_output['scale']
-  
+
   if mode == 'up'
     if current_scale < 0.9
       set_scale(output_name, 1.0)
