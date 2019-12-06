@@ -35,11 +35,17 @@ exec {
     thunar --daemon
 
     # Lock screen on timeout and before sleep
+    # swayidle -w \
+    #     timeout 300 'lock --daemonize' \
+    #     timeout 305 'swaymsg "output * dpms off"' \
+    #     resume 'swaymsg "output * dpms on"' \
+    #     before-sleep 'lock'
+
     swayidle -w \
-        timeout 300 'lock --daemonize' \
-        timeout 305 'swaymsg "output * dpms off"' \
-        resume 'swaymsg "output * dpms on"' \
-        before-sleep 'lock'
+         timeout 60 'swaylock -f -c 333333' \
+         timeout 120 'swaymsg "output * dpms off"' \
+              resume 'swaymsg "output * dpms on"' \
+         before-sleep 'swaylock -f -c dddddd'
 }
 
 # Run commands on sway start/restart
@@ -80,8 +86,10 @@ output $laptop {
     res 2560 1440
 }
 
-bindswitch lid:on exec lid-close
-bindswitch lid:off exec lid-open
+# bindswitch --reload lid:on exec lid-close
+# bindswitch --reload lid:off exec lid-open
+bindswitch --reload lid:on output eDP-1 disable
+bindswitch --reload lid:off output eDP-1 enable
 
 bindsym $mod+0 exec scale default
 bindsym $mod+minus exec scale down
