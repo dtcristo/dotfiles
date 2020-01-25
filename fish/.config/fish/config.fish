@@ -10,9 +10,9 @@ end
 #------------------
 if status --is-interactive
     # Base16 shell colors
-    if test -f $HOME/.config/base16/output/shell/scripts/base16-material-alt.sh
-        sh $HOME/.config/base16/output/shell/scripts/base16-material-alt.sh
-    end
+    # if test -f $HOME/.config/base16/output/shell/scripts/base16-material-alt.sh
+    #     sh $HOME/.config/base16/output/shell/scripts/base16-material-alt.sh
+    # end
 
     # Source .dir_colors on macOS and use coreutils `ls`
     if test (uname) = 'Darwin'
