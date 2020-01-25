@@ -26,6 +26,7 @@ ttf-joypixels
 noto-fonts
 ttf-roboto
 ttf-iosevka
+otf-font-awesome
 
 playerctl
 brightnessctl

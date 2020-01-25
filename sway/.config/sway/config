@@ -16,7 +16,7 @@ set $browser firefox
 set $files thunar
 
 default_border pixel 4
-# hide_edge_borders smart
+hide_edge_borders smart
 # smart_gaps on
 # gaps inner 20
 # gaps outer 20
@@ -235,8 +235,10 @@ input '2:7:SynPS/2_Synaptics_TouchPad' {
     # bindsym $mod+w layout tabbed
     bindsym $mod+e layout toggle split
 
-    # Make the current focus fullscreen
+    # Make the current focus fullscreen (no sleeping when fullscreen)
     bindsym $mod+f fullscreen
+    for_window [class="^.*"] inhibit_idle fullscreen
+    for_window [app_id="^.*"] inhibit_idle fullscreen
 
     # Toggle the current focus between tiling and floating mode
     bindsym $mod+Space floating toggle
@@ -294,30 +296,31 @@ set $base0F #C17E70
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    position bottom
+    swaybar_command waybar
+    # position bottom
 
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
+    # # When the status_command prints a new line to stdout, swaybar updates.
+    # # The default just shows the current date and time.
+    # status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
 
-    colors {
-        background $base00
-        separator  $base03
-        statusline $base05
+    # colors {
+    #     background $base00
+    #     separator  $base03
+    #     statusline $base05
 
-        #                   Border  BG      Text
-        focused_workspace   $base0C $base0C $base00
-        active_workspace    $base03 $base03 $base05
-        inactive_workspace  $base01 $base01 $base05
-        urgent_workspace    $base08 $base08 $base00
-        binding_mode        $base0A $base0A $base00
-    }
+    #     #                   Border  BG      Text
+    #     focused_workspace   $base0C $base0C $base00
+    #     active_workspace    $base03 $base03 $base05
+    #     inactive_workspace  $base02 $base02 $base05
+    #     urgent_workspace    $base08 $base08 $base00
+    #     binding_mode        $base0A $base0A $base00
+    # }
 }
 
 #                       Border  BG      Text    Indicator Child Border
 client.focused          $base03 $base03 $base05 $base0C   $base03
-client.focused_inactive $base01 $base01 $base05 $base01   $base01
-client.unfocused        $base01 $base01 $base05 $base01   $base01
+client.focused_inactive $base02 $base02 $base05 $base02   $base02
+client.unfocused        $base02 $base02 $base05 $base02   $base02
 client.urgent           $base08 $base08 $base00 $base08   $base08
 
 include /etc/sway/config.d/*
