@@ -42,10 +42,10 @@ exec {
     #     before-sleep 'lock'
 
     swayidle -w \
-         timeout 60 'swaylock -f -c 333333' \
+         timeout 60 'swaylock --daemonize --color 333333' \
          timeout 120 'swaymsg "output * dpms off"' \
               resume 'swaymsg "output * dpms on"' \
-         before-sleep 'swaylock -f -c dddddd'
+         before-sleep 'swaylock --daemonize --color dddddd'
 }
 
 # Run commands on sway start/restart
