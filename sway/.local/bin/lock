@@ -5,10 +5,10 @@ set swaylock_args $argv
 
 for display in $displays
     set image "/tmp/screen_$display.png"
-    if grim -o $display $image 2> /dev/null
-        set swaylock_args $swayshelock_args -i "$display:$image"
-        convert $image -scale 10% -scale 1000% $image
+    if grim -o $display $image 2>/dev/null
+        set swaylock_args $swaylock_args --image "$display:$image"
+        convert $image -scale 4% -scale 2500% $image
     end
 end
 
-swaylock --ignore-empty-password $swaylock_args
+swaylock $swaylock_args
