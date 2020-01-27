@@ -1,3 +1,6 @@
+daemonize
+image=/usr/share/backgrounds/adapta/poly.jpg
+
 ignore-empty-password
 show-failed-attempts
 
