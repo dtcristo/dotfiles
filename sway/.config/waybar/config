@@ -80,7 +80,8 @@
   },
   "memory": {
     "interval": 10,
-    "format": "{used:.1f}G "
+    "format": "{used:.1f}G ",
+    "tooltip": false
   },
   "temperature": {
     // "thermal-zone": 2,
@@ -156,6 +157,7 @@
   "custom/storage": {
     "format": "{} ",
     "interval": 60,
-    "exec": "echo $(df / --output=used -h | tail -1 | tr -d \" \")/$(df / --output=size -h | tail -1 | tr -d \" \")"
+    "exec": "echo $(df / --output=used -h | tail -1 | tr -d \" \")/$(df / --output=size -h | tail -1 | tr -d \" \")",
+    "tooltip": false
   }
 }
