@@ -1,11 +1,9 @@
-daemonize
 ignore-empty-password
 show-failed-attempts
 
 indicator-caps-lock
 
 font=Iosevka
-font-size=36
 
 indicator-radius=64
 indicator-thickness=10

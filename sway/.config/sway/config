@@ -35,11 +35,17 @@ exec {
     thunar --daemon
 
     # Lock screen on timeout and before sleep
+    # swayidle -w \
+    #     timeout 60 'lock --daemonize' \
+    #     timeout 120 'swaymsg "output * dpms off"' \
+    #     resume 'swaymsg "output * dpms on"' \
+    #     before-sleep 'lock'
+
     swayidle -w \
-        timeout 60 'lock' \
+        timeout 60 'swaylock --daemonize --image /usr/share/backgrounds/adapta/poly.jpg' \
         timeout 120 'swaymsg "output * dpms off"' \
         resume 'swaymsg "output * dpms on"' \
-        before-sleep 'lock'
+        before-sleep 'swaylock --daemonize --image /usr/share/backgrounds/adapta/poly.jpg'
 }
 
 # Run commands on sway start/restart
