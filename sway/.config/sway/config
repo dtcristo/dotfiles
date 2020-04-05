@@ -42,8 +42,8 @@ exec {
     #     before-sleep 'lock'
 
     swayidle -w \
-        timeout 60 'swaylock' \
-        timeout 120 'swaymsg "output * dpms off"' \
+        timeout 300 'swaylock' \
+        timeout 330 'swaymsg "output * dpms off"' \
         resume 'swaymsg "output * dpms on"' \
         before-sleep 'swaylock'
 }
