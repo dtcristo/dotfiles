@@ -108,4 +108,5 @@ function setup_fish --description 'Sets up universal variables and preferences'
     abbr -a serve 'ruby -run -ehttpd . -p 8888'
     abbr -a owc 'owc-dev-server -p 8888'
     abbr -a speakers 'pacmd set-card-profile 0 output:hdmi-stereo-extra1+input:analog-stereo'
+    abbr -a spec 'bin/rspec ../'
 end
