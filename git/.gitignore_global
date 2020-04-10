@@ -199,3 +199,4 @@ node_modules/
 dist/
 pkg/
 .vscode/
+scratch.rb
