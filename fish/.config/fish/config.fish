@@ -9,13 +9,14 @@ end
 # Interactive shell
 #------------------
 if status --is-interactive
-    # Base16 shell colors
-    # if test -f $HOME/.config/base16/output/shell/scripts/base16-material-alt.sh
-    #     sh $HOME/.config/base16/output/shell/scripts/base16-material-alt.sh
-    # end
-
     # Source .dir_colors on macOS and use coreutils `ls`
     if test (uname) = 'Darwin'
+        # Base16 shell colors on macOS
+        if test -f $HOME/.config/base16/output/shell/scripts/base16-material-alt.sh
+            sh $HOME/.config/base16/output/shell/scripts/base16-material-alt.sh
+        end
+
+        # Source .dir_colors on macOS and use coreutils `ls`
         eval (gdircolors --c-shell $HOME/dotfiles/shell/.dir_colors)
         alias ls='gls --color'
     end
