@@ -42,7 +42,7 @@ function setup_fish --description 'Sets up universal variables and preferences'
     #----------------------
     echo '...setting environment variables'
     set -Ux EDITOR nvim
-    set -Ux VISUAL nvim
+    set -Ux VISUAL code
     # Paths to find C/C++ headers
     # set -Ux CPATH $HOME/.local/include /usr/local/include /usr/include
     # set -Ux CPPFLAGS "-I$HOME/.local/include -I/usr/local/include -I/usr/include"
