@@ -1,9 +1,17 @@
-# asdf, version switcher
-if test -f /usr/local/opt/asdf/asdf.fish
-    source /usr/local/opt/asdf/asdf.fish
+# asdf, version switcher - manually at paths in `setup_fish.fish`
+# if test -f /usr/local/opt/asdf/asdf.fish
+#     source /usr/local/opt/asdf/asdf.fish
+# end
+if test -f /usr/local/opt/asdf/lib/asdf.fish
+    # Load the asdf wrapper function
+    source /usr/local/opt/asdf/lib/asdf.fish
 end
-if test -f /opt/asdf-vm/asdf.fish
-    source /opt/asdf-vm/asdf.fish
+# if test -f /opt/asdf-vm/asdf.fish
+#     source /opt/asdf-vm/asdf.fish
+# end
+if test -f /opt/asdf-vm/lib/asdf.fish
+    # Load the asdf wrapper function
+    source /opt/asdf-vm/lib/asdf.fish
 end
 
 # Interactive shell

@@ -21,10 +21,21 @@ function setup_fish --description 'Sets up universal variables and preferences'
     # User paths
     #-----------
     echo '...setting user paths'
+
+    set -l git_safe_bin_path .git/safe/../../bin
+    if not contains $git_safe_bin_path $PATH && not contains $git_safe_bin_path $fish_user_paths
+        set -U fish_user_paths $git_safe_bin_path $fish_user_paths
+    end
+
     set new_user_paths \
         $HOME/.local/bin \
         $HOME/.cargo/bin \
         $HOME/go/bin \
+        $HOME/.asdf/shims \
+        /usr/local/opt/asdf/shims \
+        /usr/local/opt/asdf/bin \
+        /opt/asdf-vm/asdf/shims \
+        /opt/asdf-vm/asdf/bin \
         $ANDROID_HOME/emulator \
         $ANDROID_HOME/tools \
         $ANDROID_HOME/tools/bin \
