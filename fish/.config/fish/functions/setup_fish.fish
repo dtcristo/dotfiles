@@ -54,6 +54,7 @@ function setup_fish --description 'Sets up universal variables and preferences'
     echo '...setting environment variables'
     set -Ux EDITOR nvim
     set -Ux VISUAL code
+    set -Ux OVERMIND_COLORS 2,1,3,4,5,6,16,17
     # Paths to find C/C++ headers
     # set -Ux CPATH $HOME/.local/include /usr/local/include /usr/include
     # set -Ux CPPFLAGS "-I$HOME/.local/include -I/usr/local/include -I/usr/include"
@@ -111,6 +112,8 @@ function setup_fish --description 'Sets up universal variables and preferences'
     abbr -a n 'nvim'
     abbr -a vi 'nvim'
     abbr -a vim 'nvim'
+    abbr -a r 'rspec'
+    abbr -a wr 'watchexec --exts rb -- bin/rspec'
     abbr -a be 'bundle exec'
     abbr -a os 'overmind start'
     abbr -a oc 'overmind connect'
@@ -119,5 +122,4 @@ function setup_fish --description 'Sets up universal variables and preferences'
     abbr -a serve 'ruby -run -ehttpd . -p 8888'
     abbr -a owc 'owc-dev-server -p 8888'
     abbr -a speakers 'pacmd set-card-profile 0 output:hdmi-stereo-extra1+input:analog-stereo'
-    abbr -a spec 'bin/rspec ../'
 end
