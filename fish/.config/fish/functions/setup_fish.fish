@@ -36,6 +36,7 @@ function setup_fish --description 'Sets up universal variables and preferences'
         /usr/local/opt/asdf/bin \
         /opt/asdf-vm/asdf/shims \
         /opt/asdf-vm/asdf/bin \
+        /usr/local/opt/postgresql@11/bin \
         $ANDROID_HOME/emulator \
         $ANDROID_HOME/tools \
         $ANDROID_HOME/tools/bin \
@@ -56,15 +57,15 @@ function setup_fish --description 'Sets up universal variables and preferences'
     set -Ux VISUAL code
     set -Ux OVERMIND_COLORS 2,1,3,4,5,6,16,17
     # Paths to find C/C++ headers
-    # set -Ux CPATH $HOME/.local/include /usr/local/include /usr/include
-    # set -Ux CPPFLAGS "-I$HOME/.local/include -I/usr/local/include -I/usr/include"
+    set -Ux CPATH $HOME/.local/include /usr/local/include /usr/include
+    set -Ux CPPFLAGS "-I$HOME/.local/include -I/usr/local/opt/postgresql@11/include -I/usr/local/include -I/usr/include"
     # Paths to find static libraries
-    # set -Ux LIBRARY_PATH $HOME/.local/lib /usr/local/lib /usr/lib
-    # set -Ux LDFLAGS "-L/usr/local/lib -L/usr/lib"
+    set -Ux LIBRARY_PATH $HOME/.local/lib /usr/local/lib /usr/lib
+    set -Ux LDFLAGS "-L/usr/local/opt/postgresql@11/lib -L/usr/local/lib -L/usr/lib"
     # Paths to find dynamic libraries
-    # set -Ux LD_LIBRARY_PATH $LIBRARY_PATH
+    set -Ux LD_LIBRARY_PATH $LIBRARY_PATH
     # Paths in which pkg-config will search for its .pc files
-    # set -Ux PKG_CONFIG_PATH $HOME/.local/lib/pkgconfig /usr/local/lib/pkgconfig /usr/lib/pkgconfig
+    set -Ux PKG_CONFIG_PATH $HOME/.local/lib/pkgconfig /usr/local/opt/postgresql@11/lib/pkgconfig /usr/local/lib/pkgconfig /usr/lib/pkgconfig
 
     # Linux environment variables
     if test (uname) != 'Darwin'
