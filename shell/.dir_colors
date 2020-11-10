@@ -293,12 +293,15 @@ CAPABILITY 48;5;1;38;5;0
 .zsh 38;5;6
 .fish 38;5;6
 .el 38;5;6
+.ex 38;5;6
+.exs 38;5;6
 .vim 38;5;6
 .java 38;5;6
 .pl 38;5;6
 .pm 38;5;6
 .py 38;5;6
 .rb 38;5;6
+.rs 38;5;6
 .hs 38;5;6
 .php 38;5;6
 .htm 38;5;6
@@ -504,6 +507,8 @@ CAPABILITY 48;5;1;38;5;0
 .zip 38;5;17
 
 # Unimportant files (color08 - base03)
+.DS_Store 38;5;8
+.keep 38;5;8
 .log 38;5;8
 *~ 38;5;8
 *# 38;5;8
