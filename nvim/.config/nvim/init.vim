@@ -127,7 +127,7 @@ nnoremap <silent> <C-\> :set wrap!<Return>
 let g:hardtime_default_on = 1
 let g:hardtime_ignore_quickfix = 1
 let g:hardtime_allow_different_key = 1
-let g:hardtime_maxcount = 2
+let g:hardtime_maxcount = 3
 
 " Color scheme
 let g:base16colorspace=256 " Access colors present in 256 colorspace
