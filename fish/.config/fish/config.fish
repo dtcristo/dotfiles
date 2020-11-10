@@ -14,6 +14,11 @@ if test -f /opt/asdf-vm/lib/asdf.fish
     source /opt/asdf-vm/lib/asdf.fish
 end
 
+if test -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc
+    # Load google-cloud-sdk path config
+    source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc
+end
+
 # Interactive shell
 #------------------
 if status --is-interactive
