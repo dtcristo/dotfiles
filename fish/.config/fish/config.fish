@@ -1,17 +1,11 @@
 # asdf, version switcher - manually at paths in `setup_fish.fish`
-# if test -f /usr/local/opt/asdf/asdf.fish
-#     source /usr/local/opt/asdf/asdf.fish
-# end
-if test -f /usr/local/opt/asdf/lib/asdf.fish
+if test -f /usr/local/opt/asdf/asdf.fish
     # Load the asdf wrapper function
-    source /usr/local/opt/asdf/lib/asdf.fish
+    source /usr/local/opt/asdf/asdf.fish
 end
-# if test -f /opt/asdf-vm/asdf.fish
-#     source /opt/asdf-vm/asdf.fish
-# end
-if test -f /opt/asdf-vm/lib/asdf.fish
+if test -f /opt/asdf-vm/asdf.fish
     # Load the asdf wrapper function
-    source /opt/asdf-vm/lib/asdf.fish
+    source /opt/asdf-vm/asdf.fish
 end
 
 if test -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc
