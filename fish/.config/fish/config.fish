@@ -37,3 +37,5 @@ if status --is-interactive
         end
     end
 end
+
+set -x PATH .git/safe/../../bin $PATH

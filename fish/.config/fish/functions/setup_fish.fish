@@ -22,11 +22,6 @@ function setup_fish --description 'Sets up universal variables and preferences'
     #-----------
     echo '...setting user paths'
 
-    set -l git_safe_bin_path .git/safe/../../bin
-    if not contains $git_safe_bin_path $PATH && not contains $git_safe_bin_path $fish_user_paths
-        set -U fish_user_paths $git_safe_bin_path $fish_user_paths
-    end
-
     set new_user_paths \
         $HOME/.local/bin \
         $HOME/.cargo/bin \
@@ -55,6 +50,7 @@ function setup_fish --description 'Sets up universal variables and preferences'
     set -Ux EDITOR nvim
     set -Ux VISUAL code
     set -Ux OVERMIND_COLORS 2,1,3,4,5,6,16,17
+    set -Ux ERL_AFLAGS '-kernel shell_history enabled'
     # Paths to find C/C++ headers
     # set -Ux CPATH $HOME/.local/include /usr/local/include /usr/include
     # set -Ux CPPFLAGS "-I$HOME/.local/include -I/usr/local/include -I/usr/include"
